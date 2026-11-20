@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Martin Kupka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="css">
+/* VOICE work: a builder's personal site, modern and warm, not corporate
+   IDEA a maker's shelf: each project is a card with its own small drawing of what it does
+   PICTURE none for now; his own screenshots go in the row under the figures
+   COLOUR muted: soft ink #1b1e23 on white, one ultramarine accent #2b3db8, grey hairlines
+   TYPE Geist throughout, 700 for display
+   LAYOUT laptop: name and headline, figures in a row of tiles, projects stacked one under another; phone: one column */
+:root{color-scheme:light;--bg:#ffffff;--ink:#1b1e23;--mute:#666a72;--line:#e4e5e8;--soft:#f5f5f3;--acc:#2b3db8;--accd:#2b3db8;--tint:#eef0fa}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Geist,Inter,system-ui,-apple-system,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.035em;line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,6vw,76px);max-width:14ch}
+h2{font-size:clamp(28px,3.4vw,42px)}
+h3{font-size:22px;letter-spacing:-.02em;line-height:1.2}
+p{margin:0 0 14px;max-width:66ch}
+.wrap{max-width:1160px;margin:0 auto}
+.band{padding:clamp(40px,6vw,84px) max(5vw,16px)}
+
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,#fff 86%,transparent);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;padding:12px max(5vw,16px)}
+nav b{font-weight:600;font-size:15px;margin-right:auto}
+nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--mute);padding:8px 12px;border-radius:4px}
+nav a:hover{background:var(--soft);color:var(--ink)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+
+/* hero */
+.hero{position:relative;padding-top:clamp(36px,6vw,80px);background:radial-gradient(900px 460px at 92% -8%,rgba(43,61,184,.14),rgba(43,61,184,0) 70%),radial-gradient(760px 420px at -6% 18%,rgba(110,128,220,.10),rgba(110,128,220,0) 70%),linear-gradient(180deg,#f3f4fb 0%,rgba(243,244,251,0) 100%)}
+.hero::before{display:none;content:"";position:absolute;right:-12vw;top:-18vw;width:56vw;height:56vw;max-width:760px;max-height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(43,61,184,.16),rgba(43,61,184,0));pointer-events:none}
+.hero .wrap{position:relative}
+.who{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--mute);margin-bottom:22px}
+.mono{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:4px;background:var(--ink);color:#fff;font-size:13px;font-weight:600;letter-spacing:.02em}
+.lede{font-size:19px;color:var(--mute);margin-top:22px}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:clamp(24px,4vw,40px)}
+.f{background:#fff;border:1px solid var(--line);border-radius:6px;padding:11px 14px;font-size:13px;line-height:1.35;color:var(--mute)}
+.f strong{display:block;font-size:16px;font-weight:650;letter-spacing:-.02em;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.f span{display:block}
+.f.g{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr 1fr;column-gap:16px;background:#fff;border-color:var(--ink)}
+.f.g .kp{border-left:1px solid var(--line);padding-left:16px}
+.f.g .kp strong{white-space:nowrap;color:var(--acc)}
+
+/* screenshots */
+.shots{padding-top:0}
+.shots .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line)}
+.shots figcaption{font-size:13px;color:var(--mute);margin-top:8px}
+
+/* work */
+.work{padding-top:clamp(16px,3vw,32px)}
+.sec{margin-bottom:24px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:12px clamp(24px,4vw,56px);align-items:start;border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.4vw,28px);transition:border-color .2s}
+.card:hover{border-color:var(--ink)}
+.card .meta{margin:0 0 8px}
+.card>.ctl,.card>.cover{grid-column:1/-1}
+.c-l .go{margin-top:16px}
+.intro{font-size:15px;color:var(--mute);margin:0 0 6px}
+.card details.more{margin-top:0}
+.cover{margin-bottom:18px}
+.cover{aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:var(--soft);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.cover svg,.cover img{display:block;width:100%;height:100%;object-fit:cover}
+.cover text{font-family:Geist,Inter,sans-serif}
+.card:hover .cover{transform:translateY(-3px)}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 8px}
+.cat{font-size:13px;font-weight:600;color:var(--acc)}
+.go{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;text-decoration:none;padding:6px 12px;border-radius:4px;border:1px solid var(--line);white-space:nowrap}
+.go i{font-style:normal;transition:transform .2s}
+.go+.go{margin-left:6px}
+.go.alt{color:var(--mute)}
+.go:hover{background:var(--ink);color:#fff}
+.go:hover i{transform:translate(2px,-2px)}
+.kick{color:var(--mute);font-size:15px;margin:8px 0 0}
+details.more{margin-top:12px}
+details.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--ink);padding:4px 0}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"";width:6px;height:6px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+details.more[open]>summary::after{transform:translateY(1px) rotate(-135deg)}
+details.more>summary:hover{color:var(--acc)}
+.more-body{padding-top:12px;font-size:15px;color:var(--mute)}
+.more-body>p{font-size:15px}
+.more-body h4{font-size:13px;font-weight:600;letter-spacing:0;color:var(--ink);margin:4px 0 8px}
+.pts{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pts:empty{display:none}
+.pts li{position:relative;padding-left:16px}
+.pts li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:1.5px;background:var(--acc)}
+.pts b{font-weight:600;color:var(--ink)}
+.built{font-size:13px;margin:14px 0 0}
+
+/* background */
+.bg .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,64px)}
+.tl{display:grid}
+.tr{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.tl{border-top:1px solid var(--ink)}
+
+.tr time{font-size:14px;color:var(--mute);white-space:nowrap;padding-top:2px}
+.tr h3{font-size:19px}
+.tr em{font-style:normal;font-weight:500;font-size:15px;color:var(--mute);margin-left:8px;letter-spacing:0}
+.tr p{margin:6px 0 0;color:var(--mute);font-size:15px}
+
+/* contact */
+footer.band{padding-top:0;padding-bottom:clamp(56px,8vw,110px);background:radial-gradient(820px 380px at 8% 110%,rgba(43,61,184,.11),rgba(43,61,184,0) 70%)}
+footer .wrap{border-top:1px solid var(--ink);padding-top:clamp(28px,4vw,48px);position:relative}
+footer .wrap::after{display:none;content:"";position:absolute;right:-80px;bottom:-80px;width:260px;height:260px;border-radius:50%;border:40px solid rgba(43,61,184,.14);pointer-events:none}
+footer h2{max-width:18ch;position:relative}
+.reach{list-style:none;margin:clamp(28px,4vw,44px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;position:relative}
+.reach span{display:none}
+.reach a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:4px;border:1px solid var(--ink);background:#fff;font-size:15px;font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.reach li:first-child a{background:var(--ink);color:#fff}
+.reach a:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+.where{margin:24px 0 0;font-size:14px;color:var(--mute);position:relative}
+
+/* edit mode */
+.editbar{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 32px);padding:8px;border-radius:6px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px -12px rgba(0,0,0,.3);font-size:14px}
+.editbar[hidden],.editbar [hidden]{display:none}
+.editbar .msg{color:var(--mute);padding:0 8px}
+.editbar .msg:empty{display:none}
+.editbar button{min-height:40px;padding:0 16px;border-radius:6px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:600 14px Geist,Inter,sans-serif;cursor:pointer}
+.editbar .eb-save{background:var(--ink);color:#fff}
+.editbar button:disabled{opacity:.5}
+.editing [contenteditable=true]{outline:1px dashed #a3a3a0;outline-offset:3px;border-radius:3px;cursor:text;min-width:1ch}
+.editing [contenteditable=true]:empty::before{content:"(empty)";color:#a3a3a0}
+.editing [contenteditable=true]:focus{outline:2px solid var(--acc);background:#fff}
+.ctl{display:flex;gap:4px;margin:0 0 8px}
+.ctl button,.add{min-width:30px;min-height:30px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font:600 13px Geist,Inter,sans-serif;cursor:pointer}
+.ctl button:disabled{opacity:.3;cursor:default}
+.ctl button:hover:not(:disabled),.add:hover{border-color:var(--acc);color:var(--acc)}
+.add{padding:0 12px;margin-top:12px;align-self:flex-start}
+.add.clr{margin:0 0 10px}
+.ctlcell{grid-column:1/-1}
+.f>.ctl{grid-column:1/-1}
+.editing .pts li::before{top:3.1em}
+body.editing{padding-bottom:80px}
+
+@media(max-width:900px){.f.g{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:10px}.f.g .hd{grid-column:1/-1}.f.g .hd+.kp{border-left:0;padding-left:0}.bg .wrap{grid-template-columns:1fr}}
+@media(max-width:760px){.card{grid-template-columns:1fr}}
+@media(max-width:680px){.shots .wrap{grid-template-columns:1fr}}
+@media(max-width:520px){.figs{grid-template-columns:1fr}.tr{grid-template-columns:1fr;gap:4px;padding:16px 0}.tr:hover{background:none}.lede{font-size:17px}.f.g{grid-template-columns:1fr}.f.g .kp{border-left:0;padding-left:0}.f.g .kp strong{white-space:normal}nav a{padding:8px 8px}}
+@media(prefers-reduced-motion:reduce){.cover,.go i,details.more>summary::after{transition:none}.card:hover .cover{transform:none}}
+</style>
+</head>
+<body>
+<div id="root">
+<nav><div class="wrap"><b>Martin Kupka</b><a href="#work">Work</a><a href="#background">Background</a><a href="#contact">Contact</a></div></nav>
+<header class="band hero"><div class="wrap"><h1 data-k="hero.h1">I build the AI tools I work with every day.</h1><div class="figs">
+<div class="f g"><div class="hd"><strong data-k="facts.0.title">RockawayX</strong><span data-k="facts.0.sub">Investor in AI and consumer tech, ~$5M deployed</span></div><div class="kp"><strong data-k="facts.0.k">$200M → $2.2B</strong><span data-k="facts.0.v">Assets under management</span></div><div class="kp"><strong data-k="facts.0.k2">15 → 50+</strong><span data-k="facts.0.v2">People on the team</span></div></div>
+<div class="f"><strong data-k="facts.1.k">Barclays</strong><span data-k="facts.1.v">Full-stack software engineer on trading systems (Kotlin, Java, Spring)</span></div>
+<div class="f"><strong data-k="facts.2.k">Ing., FIT ČVUT</strong><span data-k="facts.2.v">Information Systems and Management</span></div>
+</div></div></header>
+<section class="band work" id="work"><div class="wrap"><div class="sec"><h2 data-k="workTitle">Selected work</h2></div><div class="grid">
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.0.cat">Product</span></div><h3 data-k="work.0.title">Edgeline: an AI-assisted trading tool</h3><p class="kick" data-k="work.0.kicker">A full-stack web app that combines a trading journal, stats and insights, a portfolio tracker and a market screener.</p><a class="go" href="https://edgeline-sizb.onrender.com/demo"><span data-k="work.0.btn.label">Live demo</span><i aria-hidden="true">↗</i></a><a class="go alt" href="https://github.com/kupkama2/edgeline-trading-journal"><span data-k="work.0.btn2.label">Code on GitHub</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.0.intro">I rebuilt the tools I used every day as one app of my own, with 40+ data sources, automated trade logging and proactive market scans.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.0.points.0.t">Screenshot import</b> <span data-k="work.0.points.0.d">Paste a chart screenshot and Claude fills in entry, stop and target.</span></li><li><b data-k="work.0.points.1.t">What price did</b> <span data-k="work.0.points.1.d">How far each trade went for and against me, and where price went after I closed.</span></li><li><b data-k="work.0.points.2.t">Mistake tracking</b> <span data-k="work.0.points.2.d">I tag mistakes and exit reasons, and it shows which ones cost the most.</span></li><li><b data-k="work.0.points.3.t">Risk limits</b> <span data-k="work.0.points.3.d">A daily loss stop, a cooldown after a losing streak and a weekly check before I can size up.</span></li><li><b data-k="work.0.points.4.t">Exchange sync</b> <span data-k="work.0.points.4.d">Pulls fills and positions from Binance and Hyperliquid, with CSV import for the rest.</span></li><li><b data-k="work.0.points.5.t">Screener and portfolio</b> <span data-k="work.0.points.5.d">A market screener with Claude's read on each chart, plus a portfolio tab.</span></li></ul><p class="built">React · Express · Postgres · Render · Claude API · Binance and Hyperliquid APIs</p></div></details></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.1.cat">Client work</span></div><h3 data-k="work.1.title">VC workflow automation</h3><p class="kick" data-k="work.1.kicker">A venture investor's day-to-day workflow, automated.</p></div><div class="c-r"><p class="intro" data-k="work.1.intro">Automated founder and startup search, outreach, quick scans and due diligence, taking the manual work out of the analyst's job.</p><p class="built">APIs · Scrapers · Claude</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.2.cat">Client work</span></div><h3 data-k="work.2.title">Vivaco e-shop automation</h3><p class="kick" data-k="work.2.kicker">Vivaco is a Czech natural cosmetics brand with several e-shops.</p></div><div class="c-r"><p class="intro" data-k="work.2.intro">I wrote Claude skills that automatically rebuild product pages with SEO-optimized content, and built custom dashboards for sales and marketing.</p><p class="built">Claude skills · Shoptet · SEO · Sales analytics</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.3.cat">Product</span></div><h3 data-k="work.3.title">Personal time management and productivity</h3><p class="kick" data-k="work.3.kicker">Reminders, calendar, habit tracker and to-do list, rebuilt as one AI-powered app.</p></div><div class="c-r"><p class="intro" data-k="work.3.intro">All my productivity apps rebuilt as one, tailored to how I work.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.3.points.0.t">Task breakdown</b> <span data-k="work.3.points.0.d">Takes in my tasks each day, breaks them into steps and organizes them around my calendar.</span></li><li><b data-k="work.3.points.1.t">Activity tracker</b> <span data-k="work.3.points.1.d">Tracks my activity and focus against the goals I set for the day.</span></li><li><b data-k="work.3.points.2.t">Library</b> <span data-k="work.3.points.2.d">A second brain that stores media and learning content to search and come back to later.</span></li></ul><p class="built">Claude · ActivityWatch · Python · Scheduled agents</p></div></details></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.4.cat">Investment memo</span></div><h3 data-k="work.4.title">Duolingo (DUOL) investment memo</h3><p class="kick" data-k="work.4.kicker">A buy-side memo from July 2026, published as a web page.</p><a class="go" href="https://duolingo-sn.pplx.app"><span data-k="work.4.btn.label">Open the memo</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="built">Equity research · Consumer tech</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.5.cat">Case study</span></div><h3 data-k="work.5.title">Fixing employee onboarding at a 4,000-person company</h3><p class="kick" data-k="work.5.kicker">AI adoption case study with a process map, a product plan and a working prototype.</p><a class="go" href="https://claude.ai/artifact/8kpH6nq3Cohm4RBos8NssN"><span data-k="work.5.btn.label">Open the case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.5.intro">A fictional 4,000-person company where 40% of new hires start without a working laptop and 18% leave within 90 days. I mapped the current process, found the root causes, wrote a charter and roadmap, and built a prototype of a readiness portal.</p><details class="more"><summary>Key points</summary><div class="more-body"><ul class="pts"><li><b data-k="work.5.points.0.t">It starts too late</b> <span data-k="work.5.points.0.d">Nothing happens between the signed offer and day one.</span></li><li><b data-k="work.5.points.1.t">Steps wait on each other</b> <span data-k="work.5.points.1.d">Hand-offs that could run in parallel run one after another.</span></li><li><b data-k="work.5.points.2.t">No owner</b> <span data-k="work.5.points.2.d">No shared status and nobody in charge, so problems only show up on day one.</span></li><li><b data-k="work.5.points.3.t">The fix</b> <span data-k="work.5.points.3.d">Keep each team's rules, but change when information moves, who follows up and where status lives. Predictable beats fast.</span></li></ul><p class="built">Process mapping · Product charter · Prototype · AI adoption</p></div></details></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.6.cat">Product</span></div><h3 data-k="work.6.title">Custom Discord trader tracker</h3><p class="kick" data-k="work.6.kicker">Automatically collects and tracks trading calls to find the traders who are profitable over the long term.</p></div><div class="c-r"><p class="intro" data-k="work.6.intro">Monitors each trader's calls and how they perform.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.6.points.0.t">Text, screenshots and video</b> <span data-k="work.6.points.0.d">It reads levels from all three, not just the text posts.</span></li><li><b data-k="work.6.points.1.t">A chart per instrument</b> <span data-k="work.6.points.1.d">Every trader's levels on one chart, sorted by distance from the current price.</span></li><li><b data-k="work.6.points.2.t">Scoring</b> <span data-k="work.6.points.2.d">When price reaches a level, it gets marked as held or broken.</span></li><li><b data-k="work.6.points.3.t">Track record</b> <span data-k="work.6.points.3.d">Over time it shows whose levels and trades hold up.</span></li></ul><p class="built">Node · Python · Claude · Scheduled agents</p></div></details></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.7.cat">Case study</span></div><h3 data-k="work.7.title">A $30M long-only portfolio built on an AI thesis</h3><p class="kick" data-k="work.7.kicker">A case study I wrote for an investment analyst hiring process.</p><a class="go" href="https://app.notion.com/p/AI-Thesis-Portfolio-Case-Study-30M-Long-Only-Equity-Portfolio-41a0fc3944148112ac51e7fb058c2999"><span data-k="work.7.btn.label">Full case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.7.intro">$30M in public stocks around an AI thesis, each held 1 to 10 years. The brief: beat the Nasdaq in up and down markets with 65 to 80% active share.</p><details class="more"><summary>Key points</summary><div class="more-body"><ul class="pts"><li><b data-k="work.7.points.0.t">Seven themes</b> <span data-k="work.7.points.0.d">Each theme is its own sub-portfolio, sized by conviction and by how closely it tracks the Nasdaq.</span></li><li><b data-k="work.7.points.1.t">Correlation</b> <span data-k="work.7.points.1.d">0.41 to the Nasdaq over 3 years, 0.36 over the last 12 months and 0.57 in the 2022 drawdown.</span></li><li><b data-k="work.7.points.2.t">Outside the US</b> <span data-k="work.7.points.2.d">ASML, SK Hynix, Rheinmetall and Keyence fit the thesis but aren't in the index.</span></li><li><b data-k="work.7.points.3.t">Themes the index misses</b> <span data-k="work.7.points.3.d">Defence, space, robotics and biotech soften drawdowns without costing return.</span></li><li><b data-k="work.7.points.4.t">Where AI helps</b> <span data-k="work.7.points.4.d">Research on demand, news alerts, and the maths: active share, correlations, rebalancing and attribution.</span></li><li><b data-k="work.7.points.5.t">Where it doesn't</b> <span data-k="work.7.points.5.d">Building the thesis, talking to people close to the companies, and making the final call.</span></li></ul><p class="built">Equities · Portfolio construction · AI thesis</p></div></details></div></article>
+</div></div></section>
+<section class="band bg" id="background"><div class="wrap"><h2 data-k="bgTitle">Background</h2><div class="tl">
+<div class="tr"><time data-k="timeline.0.when">2025 – now</time><div><h3><span data-k="timeline.0.org">AI Products and Automation</span><em data-k="timeline.0.role">Freelance</em></h3><p data-k="timeline.0.text">Building AI tools and automations for real business workflows, from e-commerce operations to research and trading.</p></div></div>
+<div class="tr"><time data-k="timeline.1.when">2022 – 2025</time><div><h3><span data-k="timeline.1.org">RockawayX</span><em data-k="timeline.1.role">Investor</em></h3><p data-k="timeline.1.text">Led multiple deals across AI and consumer tech, deploying mid-seven figures in USD across liquid and private markets.</p></div></div>
+<div class="tr"><time data-k="timeline.2.when">2019 – 2022</time><div><h3><span data-k="timeline.2.org">Barclays</span><em data-k="timeline.2.role">Software Engineer</em></h3><p data-k="timeline.2.text">Built bond-trading systems used by trading desks in London and New York, in Kotlin and Java.</p></div></div>
+<div class="tr"><time data-k="timeline.3.when">Education</time><div><h3><span data-k="timeline.3.org">Czech Technical University in Prague</span><em data-k="timeline.3.role">FIT</em></h3><p data-k="timeline.3.text">Ing. and Bc. in Information Systems and Management. Diploma thesis with Ackee Blockchain, bachelor's thesis with a CERN researcher.</p></div></div>
+</div></div></section>
+<footer class="band" id="contact"><div class="wrap"><h2 data-k="footer.h2">Looking for a team that wants AI to do real work.</h2><ul class="reach"><li><span>Email</span><a href="mailto:martinnkupka@gmail.com" data-k="footer.email">martinnkupka@gmail.com</a></li><li><span>Phone</span><a href="tel:+420774095670" data-k="footer.phone">+420 774 095 670</a></li><li><span>LinkedIn</span><a href="https://www.linkedin.com/in/martin-kupka-92390517a">martin-kupka ↗</a></li><li><span>GitHub</span><a href="https://github.com/kupkama2">kupkama2 ↗</a></li></ul><p class="where" data-k="footer.text">Based in Prague.</p></div></footer>
+</div>
+<script type="application/json" id="state">{
+ "hero": {
+  "h1": "I build the AI tools I work with every day.",
+  "lede": "",
+  "b1": "See the work",
+  "b2": "Get in touch"
+ },
+ "facts": [
+  {
+   "title": "RockawayX",
+   "sub": "Investor in AI and consumer tech, ~$5M deployed",
+   "k": "$200M → $2.2B",
+   "v": "Assets under management",
+   "k2": "15 → 50+",
+   "v2": "People on the team"
+  },
+  {
+   "k": "Barclays",
+   "v": "Full-stack software engineer on trading systems (Kotlin, Java, Spring)"
+  },
+  {
+   "k": "Ing., FIT ČVUT",
+   "v": "Information Systems and Management"
+  }
+ ],
+ "workTitle": "Selected work",
+ "work": [
+  {
+   "title": "Edgeline: an AI-assisted trading tool",
+   "kicker": "A full-stack web app that combines a trading journal, stats and insights, a portfolio tracker and a market screener.",
+   "btn": {
+    "label": "Live demo",
+    "href": "https://edgeline-sizb.onrender.com/demo"
+   },
+   "tags": [
+    "React",
+    "Express",
+    "Postgres",
+    "Render",
+    "Claude API",
+    "Binance and Hyperliquid APIs"
+   ],
+   "intro": "I rebuilt the tools I used every day as one app of my own, with 40+ data sources, automated trade logging and proactive market scans.",
+   "points": [
+    {
+     "t": "Screenshot import",
+     "d": "Paste a chart screenshot and Claude fills in entry, stop and target."
+    },
+    {
+     "t": "What price did",
+     "d": "How far each trade went for and against me, and where price went after I closed."
+    },
+    {
+     "t": "Mistake tracking",
+     "d": "I tag mistakes and exit reasons, and it shows which ones cost the most."
+    },
+    {
+     "t": "Risk limits",
+     "d": "A daily loss stop, a cooldown after a losing streak and a weekly check before I can size up."
+    },
+    {
+     "t": "Exchange sync",
+     "d": "Pulls fills and positions from Binance and Hyperliquid, with CSV import for the rest."
+    },
+    {
+     "t": "Screener and portfolio",
+     "d": "A market screener with Claude's read on each chart, plus a portfolio tab."
+    }
+   ],
+   "more": "What it does",
+   "cat": "Product",
+   "art": "edgeline",
+   "btn2": {
+    "label": "Code on GitHub",
+    "href": "https://github.com/kupkama2/edgeline-trading-journal"
+   }
+  },
+  {
+   "title": "VC workflow automation",
+   "cat": "Client work",
+   "kicker": "A venture investor's day-to-day workflow, automated.",
+   "tags": [
+    "APIs",
+    "Scrapers",
+    "Claude"
+   ],
+   "intro": "Automated founder and startup search, outreach, quick scans and due diligence, taking the manual work out of the analyst's job.",
+   "points": [],
+   "more": "What it does",
+   "art": "dots"
+  },
+  {
+   "title": "Vivaco e-shop automation",
+   "kicker": "Vivaco is a Czech natural cosmetics brand with several e-shops.",
+   "tags": [
+    "Claude skills",
+    "Shoptet",
+    "SEO",
+    "Sales analytics"
+   ],
+   "intro": "I wrote Claude skills that automatically rebuild product pages with SEO-optimized content, and built custom dashboards for sales and marketing.",
+   "points": [],
+   "more": "What it does",
+   "cat": "Client work",
+   "art": "vivaco"
+  },
+  {
+   "title": "Personal time management and productivity",
+   "kicker": "Reminders, calendar, habit tracker and to-do list, rebuilt as one AI-powered app.",
+   "tags": [
+    "Claude",
+    "ActivityWatch",
+    "Python",
+    "Scheduled agents"
+   ],
+   "intro": "All my productivity apps rebuilt as one, tailored to how I work.",
+   "points": [
+    {
+     "t": "Task breakdown",
+     "d": "Takes in my tasks each day, breaks them into steps and organizes them around my calendar."
+    },
+    {
+     "t": "Activity tracker",
+     "d": "Tracks my activity and focus against the goals I set for the day."
+    },
+    {
+     "t": "Library",
+     "d": "A second brain that stores media and learning content to search and come back to later."
+    }
+   ],
+   "more": "What it does",
+   "cat": "Product",
+   "art": "doingnow"
+  },
+  {
+   "title": "Duolingo (DUOL) investment memo",
+   "kicker": "A buy-side memo from July 2026, published as a web page.",
+   "btn": {
+    "label": "Open the memo",
+    "href": "https://duolingo-sn.pplx.app"
+   },
+   "tags": [
+    "Equity research",
+    "Consumer tech"
+   ],
+   "intro": "",
+   "points": [],
+   "more": "Key points",
+   "cat": "Investment memo",
+   "art": "memo"
+  },
+  {
+   "title": "Fixing employee onboarding at a 4,000-person company",
+   "kicker": "AI adoption case study with a process map, a product plan and a working prototype.",
+   "btn": {
+    "label": "Open the case study",
+    "href": "https://claude.ai/artifact/8kpH6nq3Cohm4RBos8NssN"
+   },
+   "tags": [
+    "Process mapping",
+    "Product charter",
+    "Prototype",
+    "AI adoption"
+   ],
+   "intro": "A fictional 4,000-person company where 40% of new hires start without a working laptop and 18% leave within 90 days. I mapped the current process, found the root causes, wrote a charter and roadmap, and built a prototype of a readiness portal.",
+   "points": [
+    {
+     "t": "It starts too late",
+     "d": "Nothing happens between the signed offer and day one."
+    },
+    {
+     "t": "Steps wait on each other",
+     "d": "Hand-offs that could run in parallel run one after another."
+    },
+    {
+     "t": "No owner",
+     "d": "No shared status and nobody in charge, so problems only show up on day one."
+    },
+    {
+     "t": "The fix",
+     "d": "Keep each team's rules, but change when information moves, who follows up and where status lives. Predictable beats fast."
+    }
+   ],
+   "more": "Key points",
+   "cat": "Case study",
+   "art": "onboarding"
+  },
+  {
+   "title": "Custom Discord trader tracker",
+   "kicker": "Automatically collects and tracks trading calls to find the traders who are profitable over the long term.",
+   "tags": [
+    "Node",
+    "Python",
+    "Claude",
+    "Scheduled agents"
+   ],
+   "intro": "Monitors each trader's calls and how they perform.",
+   "points": [
+    {
+     "t": "Text, screenshots and video",
+     "d": "It reads levels from all three, not just the text posts."
+    },
+    {
+     "t": "A chart per instrument",
+     "d": "Every trader's levels on one chart, sorted by distance from the current price."
+    },
+    {
+     "t": "Scoring",
+     "d": "When price reaches a level, it gets marked as held or broken."
+    },
+    {
+     "t": "Track record",
+     "d": "Over time it shows whose levels and trades hold up."
+    }
+   ],
+   "more": "What it does",
+   "cat": "Product",
+   "art": "callsheet"
+  },
+  {
+   "title": "A $30M long-only portfolio built on an AI thesis",
+   "kicker": "A case study I wrote for an investment analyst hiring process.",
+   "btn": {
+    "label": "Full case study",
+    "href": "https://app.notion.com/p/AI-Thesis-Portfolio-Case-Study-30M-Long-Only-Equity-Portfolio-41a0fc3944148112ac51e7fb058c2999"
+   },
+   "tags": [
+    "Equities",
+    "Portfolio construction",
+    "AI thesis"
+   ],
+   "intro": "$30M in public stocks around an AI thesis, each held 1 to 10 years. The brief: beat the Nasdaq in up and down markets with 65 to 80% active share.",
+   "points": [
+    {
+     "t": "Seven themes",
+     "d": "Each theme is its own sub-portfolio, sized by conviction and by how closely it tracks the Nasdaq."
+    },
+    {
+     "t": "Correlation",
+     "d": "0.41 to the Nasdaq over 3 years, 0.36 over the last 12 months and 0.57 in the 2022 drawdown."
+    },
+    {
+     "t": "Outside the US",
+     "d": "ASML, SK Hynix, Rheinmetall and Keyence fit the thesis but aren't in the index."
+    },
+    {
+     "t": "Themes the index misses",
+     "d": "Defence, space, robotics and biotech soften drawdowns without costing return."
+    },
+    {
+     "t": "Where AI helps",
+     "d": "Research on demand, news alerts, and the maths: active share, correlations, rebalancing and attribution."
+    },
+    {
+     "t": "Where it doesn't",
+     "d": "Building the thesis, talking to people close to the companies, and making the final call."
+    }
+   ],
+   "more": "Key points",
+   "cat": "Case study",
+   "art": "thesis"
+  }
+ ],
+ "bgTitle": "Background",
+ "timeline": [
+  {
+   "when": "2025 – now",
+   "org": "AI Products and Automation",
+   "role": "Freelance",
+   "text": "Building AI tools and automations for real business workflows, from e-commerce operations to research and trading."
+  },
+  {
+   "when": "2022 – 2025",
+   "org": "RockawayX",
+   "role": "Investor",
+   "text": "Led multiple deals across AI and consumer tech, deploying mid-seven figures in USD across liquid and private markets."
+  },
+  {
+   "when": "2019 – 2022",
+   "org": "Barclays",
+   "role": "Software Engineer",
+   "text": "Built bond-trading systems used by trading desks in London and New York, in Kotlin and Java."
+  },
+  {
+   "when": "Education",
+   "org": "Czech Technical University in Prague",
+   "role": "FIT",
+   "text": "Ing. and Bc. in Information Systems and Management. Diploma thesis with Ackee Blockchain, bachelor's thesis with a CERN researcher."
+  }
+ ],
+ "footer": {
+  "h2": "Looking for a team that wants AI to do real work.",
+  "text": "Based in Prague.",
+  "email": "martinnkupka@gmail.com",
+  "phone": "+420 774 095 670"
+ },
+ "shots": []
+}</script>
+<script id="app">/* Cover illustrations, one per project, drawn on a 400 x 250 board. */
+var ACC = "#ff5a1f", INK = "#111111";
+function rnd(seed) { var s = seed; return function () { s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
+function svg(inner, bg) {
+  return '<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><rect width="400" height="250" fill="' + bg + '"/>' + inner + '</svg>';
+}
+var ART = {
+  edgeline: function () {
+    var r = rnd(7), o = "", y = 192, i;
+    for (i = 0; i < 24; i++) {
+      var x = 26 + i * 14.5, d = (r() - 0.36) * 34, c = y - d, hi = Math.min(y, c) - 4 - r() * 10, lo = Math.max(y, c) + 4 + r() * 10, up = c < y;
+      o += '<line x1="' + (x + 4) + '" x2="' + (x + 4) + '" y1="' + hi.toFixed(1) + '" y2="' + lo.toFixed(1) + '" stroke="' + INK + '" stroke-width="1.2"/>';
+      o += '<rect x="' + x + '" y="' + Math.min(y, c).toFixed(1) + '" width="8" height="' + Math.max(2, Math.abs(c - y)).toFixed(1) + '" rx="1.5" fill="' + (up ? ACC : INK) + '"/>';
+      y = c;
+    }
+    o += '<line x1="20" x2="380" y1="58" y2="58" stroke="' + INK + '" stroke-dasharray="4 5" opacity=".5"/><line x1="20" x2="380" y1="206" y2="206" stroke="' + INK + '" stroke-dasharray="4 5" opacity=".5"/>';
+    o += '<rect x="300" y="46" width="80" height="24" rx="12" fill="' + INK + '"/><text x="340" y="62" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">+1.8R</text>';
+    return svg(o, "#eaf3ec");
+  },
+  callsheet: function () {
+    var lv = [52, 88, 118, 151, 186, 214], o = "";
+    lv.forEach(function (y, i) {
+      o += '<line x1="24" x2="376" y1="' + y + '" y2="' + y + '" stroke="' + (i === 2 ? ACC : INK) + '" stroke-width="' + (i === 2 ? 2 : 1) + '" opacity="' + (i === 2 ? 1 : .35) + '"/>';
+      o += '<rect x="318" y="' + (y - 10) + '" width="58" height="20" rx="10" fill="' + (i === 2 ? ACC : "#fff") + '"/><text x="347" y="' + (y + 4) + '" text-anchor="middle" font-size="11" font-weight="600" fill="' + (i === 2 ? "#fff" : INK) + '">' + (5890 - i * 25) + '</text>';
+    });
+    o += '<path d="M24 200 C 60 190, 80 160, 110 152 S 150 120, 175 122 S 210 140, 230 118 S 270 92, 300 112" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round"/>';
+    [[110, 152], [175, 122], [230, 118]].forEach(function (p) { o += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="5" fill="#fff" stroke="' + INK + '" stroke-width="2"/>'; });
+    return svg(o, "#e9edfb");
+  },
+  vivaco: function () {
+    function page(x, flag) {
+      return '<g transform="translate(' + x + ' 34)"><rect width="140" height="182" rx="10" fill="#fff"/>' +
+        '<rect x="14" y="14" width="112" height="70" rx="6" fill="#f3e3da"/><path d="M58 76 v-34 a12 8 0 0 1 24 0 v34 z" fill="' + INK + '"/><rect x="64" y="26" width="12" height="10" rx="2" fill="' + ACC + '"/>' +
+        '<rect x="14" y="96" width="80" height="8" rx="4" fill="' + INK + '"/><rect x="14" y="112" width="112" height="5" rx="2.5" fill="#d9d4cf"/><rect x="14" y="123" width="96" height="5" rx="2.5" fill="#d9d4cf"/><rect x="14" y="134" width="104" height="5" rx="2.5" fill="#d9d4cf"/>' +
+        '<rect x="14" y="152" width="50" height="18" rx="9" fill="' + ACC + '"/><text x="112" y="166" text-anchor="end" font-size="12" font-weight="700" fill="' + INK + '">' + flag + '</text></g>';
+    }
+    return svg(page(44, "CZ") + page(216, "SK") + '<path d="M192 125 h18 m-7 -7 l7 7 l-7 7" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>', "#fbece4");
+  },
+  doingnow: function () {
+    var C = 2 * Math.PI * 62, o = '<circle cx="118" cy="125" r="62" fill="none" stroke="#fff" stroke-width="16"/>' +
+      '<circle cx="118" cy="125" r="62" fill="none" stroke="' + ACC + '" stroke-width="16" stroke-linecap="round" stroke-dasharray="' + (C * .74).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 118 125)"/>' +
+      '<text x="118" y="133" text-anchor="middle" font-size="26" font-weight="600" fill="' + INK + '">18:42</text>';
+    [["#111", 1], ["#111", 1], ["", 0], ["", 0]].forEach(function (s, i) {
+      var y = 70 + i * 34;
+      o += '<rect x="214" y="' + (y - 9) + '" width="18" height="18" rx="5" fill="' + (s[1] ? INK : "#fff") + '" stroke="' + INK + '" stroke-width="1.5"/>' +
+        (s[1] ? '<path d="M218 ' + y + ' l3.5 3.5 l6.5 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>' : "") +
+        '<rect x="244" y="' + (y - 4) + '" width="' + [118, 96, 128, 84][i] + '" height="8" rx="4" fill="' + INK + '" opacity="' + (s[1] ? .25 : .8) + '"/>';
+    });
+    return svg(o, "#f8f1da");
+  },
+  thesis: function () {
+    var t = [["AI infra", 39], ["Defence", 21.25], ["AI apps", 11], ["Biotech", 9.75], ["Cyber", 8], ["Robotics", 6], ["Space", 5]], o = "";
+    t.forEach(function (d, i) {
+      var y = 32 + i * 28, w = d[1] / 39 * 250;
+      o += '<text x="24" y="' + (y + 13) + '" font-size="12" font-weight="500" fill="' + INK + '">' + d[0] + '</text><rect x="92" y="' + y + '" width="' + w.toFixed(1) + '" height="18" rx="9" fill="' + (i === 1 ? ACC : INK) + '" opacity="' + (i === 1 ? 1 : .85 - i * .08) + '"/>' +
+        '<text x="' + (98 + w).toFixed(1) + '" y="' + (y + 13) + '" font-size="11" fill="' + INK + '">' + d[1] + '%</text>';
+    });
+    return svg(o, "#e6f2f4");
+  },
+  onboarding: function () {
+    var o = "", i;
+    function node(x, y, on) { return '<rect x="' + (x - 22) + '" y="' + (y - 14) + '" width="44" height="28" rx="14" fill="' + (on ? ACC : "#fff") + '" stroke="' + INK + '" stroke-width="1.5"/>'; }
+    for (i = 0; i < 5; i++) { o += node(48 + i * 76, 62, false); if (i) o += '<line x1="' + (48 + (i - 1) * 76 + 22) + '" x2="' + (48 + i * 76 - 22) + '" y1="62" y2="62" stroke="' + INK + '" stroke-width="1.5"/>'; }
+    o += node(60, 178, true);
+    [128, 178, 228].forEach(function (y) { o += '<path d="M82 178 C 120 178, 120 ' + y + ', 160 ' + y + '" fill="none" stroke="' + INK + '" stroke-width="1.5"/>' + node(182, y, false) + '<path d="M204 ' + y + ' C 244 ' + y + ', 244 178, 282 178" fill="none" stroke="' + INK + '" stroke-width="1.5"/>'; });
+    o += node(304, 178, true) + '<text x="304" y="214" text-anchor="middle" font-size="12" font-weight="600" fill="' + INK + '">Day 1</text>';
+    return svg(o, "#efeaf8");
+  },
+  memo: function () {
+    var o = '<g transform="translate(110 22)"><rect width="180" height="228" rx="10" fill="#fff"/><rect x="18" y="20" width="90" height="10" rx="5" fill="' + INK + '"/><rect x="18" y="38" width="140" height="5" rx="2.5" fill="#d8d6cf"/><rect x="18" y="48" width="120" height="5" rx="2.5" fill="#d8d6cf"/>' +
+      '<path d="M18 150 L48 136 L72 142 L98 112 L122 118 L162 76" fill="none" stroke="' + ACC + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="18" x2="162" y1="160" y2="160" stroke="#d8d6cf"/>' +
+      '<rect x="18" y="176" width="140" height="5" rx="2.5" fill="#d8d6cf"/><rect x="18" y="186" width="110" height="5" rx="2.5" fill="#d8d6cf"/><rect x="18" y="204" width="60" height="10" rx="5" fill="' + INK + '"/></g>';
+    return svg(o, "#f2efe8");
+  },
+  dots: function () {
+    var r = rnd(11), o = "", x, y;
+    for (x = 0; x < 16; x++) for (y = 0; y < 10; y++) o += '<circle cx="' + (25 + x * 23.3) + '" cy="' + (22 + y * 23) + '" r="' + (2 + r() * 4).toFixed(1) + '" fill="' + (r() > .9 ? ACC : INK) + '" opacity=".7"/>';
+    return svg(o, "#f2f2f0");
+  }
+};
+function cover(w) {
+  if (w.img) return '<img src="' + esc(w.img.src) + '" alt="' + esc(w.img.alt || "") + '" loading="lazy">';
+  return (ART[w.art] || ART.dots)();
+}
+
+/* Renders the page from the JSON in #state. The owner can switch on edit mode,
+   change text, reorder points and save: the page republishes itself from the
+   state, never from the live DOM. */
+var NEW = {
+  facts: {k: "New fact", v: "What it means"},
+  work: {title: "New project", cat: "Product", more: "Key points", art: "dots", kicker: "One line on what it is.", tags: [], intro: "What it is and why it matters.", points: []},
+  points: {t: "New point", d: "Describe it."},
+  timeline: {when: "Year", org: "Company", role: "Role", text: "What you did."}
+};
+
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+function render(S, E) {
+  function k(path) { return ' data-k="' + path + '"'; }
+  function ctl(list, i, n, what) {
+    if (!E) return "";
+    return '<span class="ctl" contenteditable="false">' +
+      '<button type="button" data-act="up" data-l="' + list + '" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' aria-label="Move ' + what + ' up">↑</button>' +
+      '<button type="button" data-act="down" data-l="' + list + '" data-i="' + i + '"' + (i === n - 1 ? " disabled" : "") + ' aria-label="Move ' + what + ' down">↓</button>' +
+      '<button type="button" data-act="del" data-l="' + list + '" data-i="' + i + '" aria-label="Remove ' + what + '">×</button></span>';
+  }
+  function add(list, label) { return E ? '<button type="button" class="add" data-act="add" data-l="' + list + '">+ ' + label + '</button>' : ""; }
+  var h = [];
+
+  h.push('<nav><div class="wrap"><b>Martin Kupka</b><a href="#work">Work</a><a href="#background">Background</a><a href="#contact">Contact</a></div></nav>');
+
+  h.push('<header class="band hero"><div class="wrap"><h1' + k("hero.h1") + '>' + S.hero.h1 + '</h1>' +
+    ((S.hero.lede || E) ? '<p class="lede"' + k("hero.lede") + '>' + S.hero.lede + '</p>' : "") + '<div class="figs">');
+  S.facts.forEach(function (f, i) {
+    var q = "facts." + i;
+    if (f.k2 != null) h.push('<div class="f g">' + ctl("facts", i, S.facts.length, "fact") +
+      '<div class="hd"><strong' + k(q + ".title") + '>' + f.title + '</strong><span' + k(q + ".sub") + '>' + f.sub + '</span></div>' +
+      '<div class="kp"><strong' + k(q + ".k") + '>' + f.k + '</strong><span' + k(q + ".v") + '>' + f.v + '</span></div>' +
+      '<div class="kp"><strong' + k(q + ".k2") + '>' + f.k2 + '</strong><span' + k(q + ".v2") + '>' + f.v2 + '</span></div>' +
+      (f.k3 != null ? '<div class="kp"><strong' + k(q + ".k3") + '>' + f.k3 + '</strong><span' + k(q + ".v3") + '>' + f.v3 + '</span></div>' : '') + '</div>');
+    else h.push('<div class="f">' + ctl("facts", i, S.facts.length, "fact") + '<strong' + k(q + ".k") + '>' + f.k + '</strong><span' + k(q + ".v") + '>' + f.v + '</span></div>');
+  });
+  h.push('</div>' + add("facts", "Add fact") + '</div></header>');
+
+  if (S.shots && S.shots.length) h.push('<section class="band shots" aria-label="Screenshots"><div class="wrap">' + S.shots.map(function (x) { return '<figure><img src="' + esc(x.src) + '" alt="' + esc(x.alt || "") + '" loading="lazy">' + (x.cap ? '<figcaption>' + x.cap + '</figcaption>' : "") + '</figure>'; }).join("") + '</div></section>');
+
+  h.push('<section class="band work" id="work"><div class="wrap"><div class="sec"><h2' + k("workTitle") + '>' + S.workTitle + '</h2></div><div class="grid">');
+  S.work.forEach(function (w, i) {
+    var p = "work." + i;
+    var intro = (w.intro || E) ? '<p class="intro"' + k(p + ".intro") + '>' + w.intro + '</p>' : "";
+    var body = '' +
+      ((E && w.points.length) ? '<h4' + k(p + ".more") + '>' + (w.more || "") + '</h4>' : "") +
+      ((E && w.points.length) ? '<button type="button" class="add clr" data-act="clear" data-l="' + p + '.points">Remove this section</button>' : "") +
+      '<ul class="pts">' + w.points.map(function (pt, j) {
+        return '<li>' + ctl(p + ".points", j, w.points.length, "point") + '<b' + k(p + ".points." + j + ".t") + '>' + pt.t + '</b> <span' + k(p + ".points." + j + ".d") + '>' + pt.d + '</span></li>';
+      }).join("") + '</ul>' + add(p + ".points", "Add point") +
+      (w.tags.length ? '<p class="built">' + w.tags.join(" · ") + '</p>' : "");
+    h.push('<article class="card">' + (E ? ctl("work", i, S.work.length, "project") : "") +
+      (w.img ? '<div class="cover">' + cover(w) + '</div>' : "") +
+      '<div class="c-l"><div class="meta"><span class="cat"' + k(p + ".cat") + '>' + (w.cat || "") + '</span></div>' +
+      '<h3' + k(p + ".title") + '>' + w.title + '</h3><p class="kick"' + k(p + ".kicker") + '>' + w.kicker + '</p>' +
+      (w.btn ? '<a class="go" href="' + esc(w.btn.href) + '"><span' + k(p + ".btn.label") + '>' + w.btn.label + '</span><i aria-hidden="true">↗</i></a>' : "") +
+      (w.btn2 ? '<a class="go alt" href="' + esc(w.btn2.href) + '"><span' + k(p + ".btn2.label") + '>' + w.btn2.label + '</span><i aria-hidden="true">↗</i></a>' : "") + '</div>' +
+      '<div class="c-r">' + intro + ((w.points.length || E) ? (E ? '<div class="more-body">' + body + '</div>' : '<details class="more"><summary>' + (w.more || "Read more") + '</summary><div class="more-body">' + body + '</div></details>') : (w.tags.length ? '<p class="built">' + w.tags.join(" · ") + '</p>' : "")) + '</div>' +
+      '</article>');
+  });
+  h.push('</div>' + add("work", "Add project") + '</div></section>');
+
+  h.push('<section class="band bg" id="background"><div class="wrap"><h2' + k("bgTitle") + '>' + S.bgTitle + '</h2><div class="tl">');
+  S.timeline.forEach(function (t, i) {
+    var p = "timeline." + i;
+    h.push('<div class="tr">' + (E ? '<span class="ctlcell">' + ctl("timeline", i, S.timeline.length, "row") + '</span>' : "") +
+      '<time' + k(p + ".when") + '>' + t.when + '</time><div><h3><span' + k(p + ".org") + '>' + t.org + '</span>' +
+      (t.role || E ? '<em' + k(p + ".role") + '>' + t.role + '</em>' : "") + '</h3>' +
+      '<p' + k(p + ".text") + '>' + t.text + '</p></div></div>');
+  });
+  h.push('</div>' + add("timeline", "Add row") + '</div></section>');
+
+  var F = S.footer;
+  var tel = String(F.phone).replace(/[^+\d]/g, "");
+  h.push('<footer class="band" id="contact"><div class="wrap"><h2' + k("footer.h2") + '>' + F.h2 + '</h2>' +
+    '<ul class="reach">' +
+    '<li><span>Email</span><a href="mailto:' + esc(F.email) + '"' + k("footer.email") + '>' + F.email + '</a></li>' +
+    '<li><span>Phone</span><a href="tel:' + tel + '"' + k("footer.phone") + '>' + F.phone + '</a></li>' +
+    '<li><span>LinkedIn</span><a href="https://www.linkedin.com/in/martin-kupka-92390517a">martin-kupka ↗</a></li>' +
+    '<li><span>GitHub</span><a href="https://github.com/kupkama2">kupkama2 ↗</a></li></ul>' +
+    '<p class="where"' + k("footer.text") + '>' + F.text + '</p></div></footer>');
+  return h.join("\n");
+}
+
+function getAt(o, path) { return path.split(".").reduce(function (a, p) { return a[p]; }, o); }
+function setAt(o, path, v) { var ps = path.split("."), last = ps.pop(); getAt(o, ps.join("."))[last] = v; }
+
+function boot() {
+  var root = document.getElementById("root");
+  var original = document.getElementById("state").textContent;
+  var S = JSON.parse(original);
+  var editing = false, dirty = false, artifact = null;
+
+  function paint() {
+    root.innerHTML = render(S, editing);
+    if (editing) root.querySelectorAll("[data-k]").forEach(function (el) { el.setAttribute("contenteditable", "true"); el.spellcheck = true; });
+    document.body.classList.toggle("editing", editing);
+  }
+  paint();
+
+  root.addEventListener("input", function (e) {
+    var el = e.target.closest("[data-k]");
+    if (!el || !editing) return;
+    setAt(S, el.dataset.k, el.innerHTML.replace(/<br\s*\/?>$/i, "").trim());
+    dirty = true; status("Unsaved changes");
+  });
+  root.addEventListener("paste", function (e) {
+    if (!editing || !e.target.closest("[data-k]")) return;
+    e.preventDefault();
+    document.execCommand("insertText", false, (e.clipboardData || window.clipboardData).getData("text/plain"));
+  });
+  root.addEventListener("keydown", function (e) {
+    if (editing && e.key === "Enter" && e.target.closest("[data-k]")) e.preventDefault();
+  });
+  root.addEventListener("click", function (e) {
+    if (!editing) return;
+    var b = e.target.closest("button[data-act]");
+    if (b) {
+      e.preventDefault();
+      var list = getAt(S, b.dataset.l), i = +b.dataset.i, act = b.dataset.act;
+      if (act === "up" && i > 0) list.splice(i - 1, 0, list.splice(i, 1)[0]);
+      else if (act === "down" && i < list.length - 1) list.splice(i + 1, 0, list.splice(i, 1)[0]);
+      else if (act === "del") list.splice(i, 1);
+      else if (act === "clear") list.splice(0, list.length);
+      else if (act === "add") list.push(JSON.parse(JSON.stringify(NEW[b.dataset.l.split(".").pop()])));
+      dirty = true; paint(); status("Unsaved changes");
+      return;
+    }
+    if (e.target.closest("a")) e.preventDefault();
+    if (e.target.closest("summary")) e.preventDefault();
+  });
+
+  var bar = document.createElement("div");
+  bar.className = "editbar"; bar.hidden = true;
+  bar.innerHTML = '<span class="msg" role="status"></span><button type="button" class="eb-edit">Edit page</button><button type="button" class="eb-cancel" hidden>Cancel</button><button type="button" class="eb-save" hidden>Save</button>';
+  document.body.appendChild(bar);
+  var bEdit = bar.querySelector(".eb-edit"), bSave = bar.querySelector(".eb-save"), bCancel = bar.querySelector(".eb-cancel"), msg = bar.querySelector(".msg");
+  function status(t) { msg.textContent = t || ""; }
+  function mode(on) {
+    editing = on; bEdit.hidden = on; bSave.hidden = !on; bCancel.hidden = !on;
+    status(on ? "Click any text to change it. Arrows move points." : "");
+    paint();
+  }
+  bEdit.onclick = function () { mode(true); };
+  bCancel.onclick = function () { S = JSON.parse(original); dirty = false; mode(false); };
+  bSave.onclick = function () {
+    if (!dirty) { mode(false); return; }
+    bSave.disabled = true; status("Saving…");
+    var html = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n" + HEAD() + "\n</head>\n<body>\n<div id=\"root\">\n" + render(S, false) +
+      "\n</div>\n<script type=\"application/json\" id=\"state\">" + JSON.stringify(S, null, 1).replace(/</g, "\\u003c") + "<\/script>\n<script id=\"app\">" +
+      document.getElementById("app").textContent + "<\/script>\n</body>\n</html>\n";
+    artifact.publish(html).then(function () { status("Saved"); }).catch(function (err) {
+      bSave.disabled = false;
+      var c = err && (err.code || err.name || err.message);
+      if (/conflict/i.test(c)) status("Someone saved at the same time. Reloading.");
+      else if (/not_writer|not_granted/i.test(c)) status("This view can't save changes.");
+      else status("Couldn't save. Try again.");
+    });
+  };
+
+  if (window.claude && claude.use) {
+    Promise.all([claude.use("user"), claude.use("artifact")]).then(function (r) {
+      var user = r[0]; artifact = r[1];
+      if (!artifact || !user || !user.canEdit) return;
+      return Promise.resolve(user.canEdit()).then(function (can) { if (can) bar.hidden = false; });
+    }).catch(function () {});
+  }
+}
+
+function HEAD() {
+  return '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>Martin Kupka</title>\n' +
+    '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+    '<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">\n' +
+    '<style id="css">' + document.getElementById("css").textContent + '</style>';
+}
+
+if (typeof document !== "undefined" && document.getElementById("state")) boot();
+</script>
+</body>
+</html>
