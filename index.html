@@ -62,7 +62,6 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offse
 .grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:12px clamp(24px,4vw,56px);align-items:start;border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.4vw,28px);transition:border-color .2s}
 .card:hover{border-color:var(--ink)}
-.card .meta{margin:0 0 8px}
 .card>.ctl,.card>.cover{grid-column:1/-1}
 .c-l .go{margin-top:16px}
 .intro{font-size:15px;color:var(--mute);margin:0 0 6px}
@@ -127,7 +126,26 @@ footer h2{max-width:18ch;position:relative}
 .editbar .msg{color:var(--mute);padding:0 8px}
 .editbar .msg:empty{display:none}
 .editbar button{min-height:40px;padding:0 16px;border-radius:6px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:600 14px Geist,Inter,sans-serif;cursor:pointer}
-.editbar .eb-save{background:var(--ink);color:#fff}
+.editbar .eb-save,.editbar .eb-rev{background:var(--ink);color:#fff}
+.editbar .eb-all{border-color:#1f7a4d;color:#1f7a4d}
+/* suggested changes */
+.sg{display:block;margin:10px 0 14px;border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:6px;background:#fff;font-size:14px;line-height:1.45;color:var(--ink);text-align:left;font-weight:400;letter-spacing:0;grid-column:1/-1}
+.sg-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--tint);font-size:13px}
+.sg-h span{display:flex;gap:6px}
+.sg-h button{min-height:30px;padding:0 10px;border-radius:4px;border:1px solid var(--line);background:#fff;font:600 13px Geist,Inter,sans-serif;cursor:pointer}
+.sg-h button[data-sg="ok"]{border-color:#1f7a4d;background:#1f7a4d;color:#fff}
+.sg-g{display:grid;grid-template-columns:1fr 1fr}
+.sg-o,.sg-n{padding:10px 12px;min-width:0}
+.sg-o{background:#fdf3f2;border-right:1px solid var(--line)}
+.sg-n{background:#f1f8f3}
+.sg small{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);margin-bottom:4px}
+.sg p{margin:0;font-size:14px}
+.sg del{background:#f6d4d0;color:#8a1c12;text-decoration:line-through}
+.sg ins{background:#cdebd6;color:#13532f;text-decoration:none}
+.sg-e{outline:1px dashed #9fcfae;border-radius:3px;padding:2px 4px;margin:0 -4px 6px!important}
+.sg-d{font-size:12px!important;color:var(--mute)}
+.sg i{color:var(--mute)}
+@media(max-width:620px){.sg-g{grid-template-columns:1fr}.sg-o{border-right:0;border-bottom:1px solid var(--line)}}
 .editbar button:disabled{opacity:.5}
 .editing [contenteditable=true]{outline:1px dashed #a3a3a0;outline-offset:3px;border-radius:3px;cursor:text;min-width:1ch}
 .editing [contenteditable=true]:empty::before{content:"(empty)";color:#a3a3a0}
@@ -148,28 +166,65 @@ body.editing{padding-bottom:80px}
 @media(max-width:680px){.shots .wrap{grid-template-columns:1fr}}
 @media(max-width:520px){.figs{grid-template-columns:1fr}.tr{grid-template-columns:1fr;gap:4px;padding:16px 0}.tr:hover{background:none}.lede{font-size:17px}.f.g{grid-template-columns:1fr}.f.g .kp{border-left:0;padding-left:0}.f.g .kp strong{white-space:normal}nav a{padding:8px 8px}}
 @media(prefers-reduced-motion:reduce){.cover,.go i,details.more>summary::after{transition:none}.card:hover .cover{transform:none}}
+/* v20: icons, open points, VC pipeline, chips, hero buttons, screenshot slot */
+.cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.cta .go{padding:10px 16px;font-size:15px}
+.cta .go+.go{margin-left:0}
+.cta .go:hover i{transform:translateY(2px)}
+.go.solid{background:var(--ink);border-color:var(--ink);color:#fff}
+.go.solid:hover{background:var(--acc);border-color:var(--acc)}
+.card .meta{justify-content:flex-start;gap:10px;margin:0 0 12px}
+.ico{display:inline-grid;place-items:center;width:32px;height:32px;flex:none;border-radius:6px;background:var(--tint);color:var(--acc)}
+.ico svg{width:18px;height:18px}
+.card.feat .ico{background:#fff;border:1px solid var(--line)}
+.chips{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.chips li{border-radius:4px;padding:2px 8px;font-size:12px;line-height:1.5;color:var(--mute);background:var(--soft)}
+.card.feat .chips li{background:#fff}
+.intro{color:var(--ink);font-size:16px}
+.c-r>.more-body{padding-top:0}
+.c-r>.intro+.more-body{padding-top:8px}
+.card.solo{grid-template-columns:1fr}
+.card.feat{border-color:var(--ink);background:linear-gradient(180deg,var(--tint),#fff 120px)}
+.pipe{grid-column:1/-1;list-style:none;margin:10px 0 0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);border:1px solid var(--line);border-radius:6px;background:#fff}
+.pipe li{position:relative;padding:14px 16px;font-size:14px;line-height:1.4;color:var(--mute)}
+.pipe li+li{border-left:1px solid var(--line)}
+.pipe li+li::before{content:"";position:absolute;left:-5px;top:20px;width:8px;height:8px;background:#fff;border-top:1.5px solid var(--acc);border-right:1.5px solid var(--acc);transform:rotate(45deg)}
+.pipe i{display:block;font-style:normal;font-size:12px;font-weight:600;color:var(--acc);margin-bottom:6px}
+.pipe b{display:block;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.card.has-shot{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) 300px}
+.shot{display:block}
+.shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:1px solid var(--line);border-radius:6px}
+.editing .sg-e [contenteditable=true]:not(:focus){outline:0}
+@media(max-width:1100px){.card.has-shot{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}.card.has-shot .shot{grid-column:1/-1;max-width:420px}}
+@media(max-width:900px){.pipe{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}.pipe li:nth-child(odd){border-left:0}.pipe li:nth-child(odd)::before{display:none}.pipe li:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:760px){.card.has-shot{grid-template-columns:1fr}}
+@media(max-width:520px){.pipe{grid-template-columns:1fr}.pipe li+li{border-left:0;border-top:1px solid var(--line)}.pipe li+li::before{display:none}}
+.kpis{display:flex;gap:28px;margin:16px 0 4px}
+.kpis div{display:grid;gap:2px}
+.kpis strong{font-size:26px;line-height:1.1;font-weight:600;color:var(--acc);letter-spacing:-.01em}
+.kpis span{font-size:13px;color:var(--mute);max-width:16ch}
 </style>
 </head>
 <body>
 <div id="root">
 <nav><div class="wrap"><b>Martin Kupka</b><a href="#work">Work</a><a href="#background">Background</a><a href="#contact">Contact</a></div></nav>
-<header class="band hero"><div class="wrap"><h1 data-k="hero.h1">I build the AI tools I work with every day.</h1><div class="figs">
+<header class="band hero"><div class="wrap"><h1 data-k="hero.h1">I build the AI tools I work with every day.</h1><div class="cta"><a class="go solid" href="#work"><span data-k="hero.b1">See the work</span><i aria-hidden="true">↓</i></a><a class="go" href="#contact"><span data-k="hero.b2">Get in touch</span></a></div><div class="figs">
 <div class="f g"><div class="hd"><strong data-k="facts.0.title">RockawayX</strong><span data-k="facts.0.sub">Investor in AI and consumer tech</span></div><div class="kp"><strong data-k="facts.0.k">$200M → $2.2B</strong><span data-k="facts.0.v">Assets under management</span></div><div class="kp"><strong data-k="facts.0.k2">15 → 50+</strong><span data-k="facts.0.v2">People on the team</span></div></div>
 <div class="f"><strong data-k="facts.1.k">Barclays</strong><span data-k="facts.1.v">Full-stack software engineer on trading systems (Kotlin, Java, Spring)</span></div>
 <div class="f"><strong data-k="facts.2.k">Ing., FIT ČVUT</strong><span data-k="facts.2.v">Information Systems and Management</span></div>
 </div></div></header>
 <section class="band work" id="work"><div class="wrap"><div class="sec"><h2 data-k="workTitle">Selected work</h2></div><div class="grid">
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.0.cat">Product</span></div><h3 data-k="work.0.title">Edgeline: an AI-assisted trading tool</h3><p class="kick" data-k="work.0.kicker">A full-stack web app that combines a trading journal, stats and insights, a portfolio tracker and a market screener.</p><a class="go" href="https://edgeline-sizb.onrender.com/demo"><span data-k="work.0.btn.label">Live demo</span><i aria-hidden="true">↗</i></a><a class="go alt" href="https://github.com/kupkama2/edgeline-trading-journal"><span data-k="work.0.btn2.label">Code on GitHub</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.0.intro">I rebuilt the tools I used every day as one app of my own, with 40+ data sources, automated trade logging and proactive market scans.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.0.points.0.t">Automated trade logging</b> <span data-k="work.0.points.0.d">Hyperliquid and Binance trades synchronized</span></li><li><b data-k="work.0.points.1.t">What price did</b> <span data-k="work.0.points.1.d">How far each trade went for and against me, and where price went after I closed.</span></li><li><b data-k="work.0.points.2.t">Mistake tracking</b> <span data-k="work.0.points.2.d">I tag mistakes and exit reasons, and it shows which ones cost the most.</span></li><li><b data-k="work.0.points.3.t">Risk limits</b> <span data-k="work.0.points.3.d">A daily loss stop, a cooldown after a losing streak and a weekly check before I can size up.</span></li><li><b data-k="work.0.points.4.t">Exchange sync</b> <span data-k="work.0.points.4.d">Pulls fills and positions from Binance and Hyperliquid, with CSV import for the rest.</span></li><li><b data-k="work.0.points.5.t">Screener and portfolio</b> <span data-k="work.0.points.5.d">A market screener with an AI read on each chart, plus a portfolio tab.</span></li></ul><p class="built">React · Express · Postgres · Render · Claude API · Binance and Hyperliquid APIs</p></div></details></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.1.cat">Client work</span></div><h3 data-k="work.1.title">VC workflow automation</h3><p class="kick" data-k="work.1.kicker">A venture investor's day-to-day workflow, automated.</p></div><div class="c-r"><p class="intro" data-k="work.1.intro">Automated founder and startup search, outreach, quick scans and due diligence, taking the manual work out of the analyst's job.</p><p class="built">APIs · Scrapers · Claude</p></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.2.cat">Client work</span></div><h3 data-k="work.2.title">Vivaco e-shop automation</h3><p class="kick" data-k="work.2.kicker">Vivaco is a Czech natural cosmetics brand with several e-shops.</p></div><div class="c-r"><p class="intro" data-k="work.2.intro">I wrote Claude skills that automatically rebuild product pages with SEO-optimized content, and built custom dashboards for sales and marketing.</p><p class="built">Claude skills · Shoptet · SEO · Sales analytics</p></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.3.cat">Product</span></div><h3 data-k="work.3.title">Personal time management and productivity</h3><p class="kick" data-k="work.3.kicker">Reminders, calendar, habit tracker and to-do list, rebuilt as one AI-powered app.</p></div><div class="c-r"><p class="intro" data-k="work.3.intro">All my productivity apps rebuilt as one, tailored to how I work.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.3.points.0.t">Task breakdown</b> <span data-k="work.3.points.0.d">Takes in my tasks each day, breaks them into steps and organizes them around my calendar.</span></li><li><b data-k="work.3.points.1.t">Activity tracker</b> <span data-k="work.3.points.1.d">Tracks my activity and focus against the goals I set for the day.</span></li><li><b data-k="work.3.points.2.t">Library</b> <span data-k="work.3.points.2.d">A second brain that stores media and learning content to search and come back to later.</span></li></ul><p class="built">Claude · ActivityWatch · Python · Scheduled agents</p></div></details></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.4.cat">Investment memo</span></div><h3 data-k="work.4.title">Duolingo (DUOL) investment memo</h3><p class="kick" data-k="work.4.kicker">A buy-side memo from July 2026, published as a web page.</p><a class="go" href="https://duolingo-sn.pplx.app"><span data-k="work.4.btn.label">Open the memo</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="built">Equity research · Consumer tech</p></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.5.cat">Case study</span></div><h3 data-k="work.5.title">Fixing employee onboarding at a 4,000-person company</h3><p class="kick" data-k="work.5.kicker">AI adoption case study with a process map, a product plan and a working prototype.</p><a class="go" href="https://claude.ai/artifact/8kpH6nq3Cohm4RBos8NssN"><span data-k="work.5.btn.label">Open the case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.5.intro">A fictional 4,000-person company where 40% of new hires start without a working laptop and 18% leave within 90 days. I mapped the current process, found the root causes, wrote a charter and roadmap, and built a prototype of a readiness portal.</p><details class="more"><summary>Key points</summary><div class="more-body"><ul class="pts"><li><b data-k="work.5.points.0.t">It starts too late</b> <span data-k="work.5.points.0.d">Nothing happens between the signed offer and day one.</span></li><li><b data-k="work.5.points.1.t">Steps wait on each other</b> <span data-k="work.5.points.1.d">Hand-offs that could run in parallel run one after another.</span></li><li><b data-k="work.5.points.2.t">No owner</b> <span data-k="work.5.points.2.d">No shared status and nobody in charge, so problems only show up on day one.</span></li><li><b data-k="work.5.points.3.t">The fix</b> <span data-k="work.5.points.3.d">Keep each team's rules, but change when information moves, who follows up and where status lives. Predictable beats fast.</span></li></ul><p class="built">Process mapping · Product charter · Prototype · AI adoption</p></div></details></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.6.cat">Product</span></div><h3 data-k="work.6.title">Custom Discord trader tracker</h3><p class="kick" data-k="work.6.kicker">Automatically collects and tracks trading calls to find profitable traders.</p></div><div class="c-r"><p class="intro" data-k="work.6.intro">Monitors each trader's calls and how they perform.</p><details class="more"><summary>What it does</summary><div class="more-body"><ul class="pts"><li><b data-k="work.6.points.0.t">Text, screenshots and video input parsing</b> <span data-k="work.6.points.0.d"></span></li><li><b data-k="work.6.points.1.t">Scheduled runs</b> <span data-k="work.6.points.1.d"></span></li><li><b data-k="work.6.points.2.t">Chart and signal generation</b> <span data-k="work.6.points.2.d"></span></li></ul><p class="built">Node · Python · Claude · Scheduled agents</p></div></details></div></article>
-<article class="card"><div class="c-l"><div class="meta"><span class="cat" data-k="work.7.cat">Case study</span></div><h3 data-k="work.7.title">A $30M long-only portfolio built on an AI thesis</h3><p class="kick" data-k="work.7.kicker">A case study I wrote for an investment analyst hiring process.</p><a class="go" href="https://app.notion.com/p/AI-Thesis-Portfolio-Case-Study-30M-Long-Only-Equity-Portfolio-41a0fc3944148112ac51e7fb058c2999"><span data-k="work.7.btn.label">Full case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.7.intro">$30M in public stocks around an AI thesis, each held 1 to 10 years. The brief: beat the Nasdaq in up and down markets with 65 to 80% active share.</p><details class="more"><summary>Key points</summary><div class="more-body"><ul class="pts"><li><b data-k="work.7.points.0.t">Seven themes</b> <span data-k="work.7.points.0.d">Each theme is its own sub-portfolio, sized by conviction and by how closely it tracks the Nasdaq.</span></li><li><b data-k="work.7.points.1.t">Correlation</b> <span data-k="work.7.points.1.d">0.41 to the Nasdaq over 3 years, 0.36 over the last 12 months and 0.57 in the 2022 drawdown.</span></li><li><b data-k="work.7.points.2.t">Outside the US</b> <span data-k="work.7.points.2.d">ASML, SK Hynix, Rheinmetall and Keyence fit the thesis but aren't in the index.</span></li><li><b data-k="work.7.points.3.t">Themes the index misses</b> <span data-k="work.7.points.3.d">Defence, space, robotics and biotech soften drawdowns without costing return.</span></li><li><b data-k="work.7.points.4.t">Where AI helps</b> <span data-k="work.7.points.4.d">Research on demand, news alerts, and the maths: active share, correlations, rebalancing and attribution.</span></li><li><b data-k="work.7.points.5.t">Where it doesn't</b> <span data-k="work.7.points.5.d">Building the thesis, talking to people close to the companies, and making the final call.</span></li></ul><p class="built">Equities · Portfolio construction · AI thesis</p></div></details></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v3M6 15v4M12 9v2M12 17v3M18 5v2M18 13v5"/><rect x="4" y="7" width="4" height="8" rx="1"/><rect x="10" y="11" width="4" height="6" rx="1"/><rect x="16" y="7" width="4" height="6" rx="1"/></svg></span><span class="cat" data-k="work.0.cat">Product</span></div><h3 data-k="work.0.title">Edgeline: an AI-assisted trading tool</h3><p class="kick" data-k="work.0.kicker">Full-stack trading platform: journal, analytics, portfolio and screener in one app.</p><ul class="chips"><li>React</li><li>Express</li><li>Postgres</li><li>Render</li><li>Claude API</li><li>Binance and Hyperliquid APIs</li></ul><a class="go" href="https://edgeline-sizb.onrender.com/demo"><span data-k="work.0.btn.label">Live demo</span><i aria-hidden="true">↗</i></a><a class="go alt" href="https://github.com/kupkama2/edgeline-trading-journal"><span data-k="work.0.btn2.label">Code on GitHub</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.0.intro">Replaced my daily tool stack with one app: 40+ data sources, automated trade logging, AI market scans.</p><div class="more-body"><ul class="pts"><li><b data-k="work.0.points.0.t">Trade analytics</b> <span data-k="work.0.points.0.d">MFE/MAE per trade and post-exit price tracking.</span></li><li><b data-k="work.0.points.1.t">Mistake attribution</b> <span data-k="work.0.points.1.d">Tagged errors and exit reasons, ranked by P&amp;L cost.</span></li><li><b data-k="work.0.points.2.t">Risk engine</b> <span data-k="work.0.points.2.d">Daily loss stop, losing-streak cooldown, trading score</span></li><li><b data-k="work.0.points.3.t">Exchange sync</b> <span data-k="work.0.points.3.d">Live fills and positions from Binance and Hyperliquid, CSV for the rest.</span></li><li><b data-k="work.0.points.4.t">AI screener</b> <span data-k="work.0.points.4.d">Market scans with an LLM read on each chart, plus a portfolio view.</span></li></ul></div></div></article>
+<article class="card feat"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v5l-4 2v-7z"/></svg></span><span class="cat" data-k="work.1.cat">Client work</span></div><h3 data-k="work.1.title">VC workflow automation</h3><p class="kick" data-k="work.1.kicker">Helped build an agentic deal sourcing and diligence tool.</p><div class="kpis"><div><strong data-k="work.1.kpis.0.k">~80%</strong><span data-k="work.1.kpis.0.v">of founders reached early</span></div><div><strong data-k="work.1.kpis.1.k">3+ weeks</strong><span data-k="work.1.kpis.1.v">ahead of the usual pipeline</span></div></div><ul class="chips"><li>APIs</li><li>Scrapers</li><li>Claude</li></ul></div><div class="c-r"><p class="intro" data-k="work.1.intro">Agents handle founder search, outreach, first-pass screening and due diligence.</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l2-6h14l2 6z"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></span><span class="cat" data-k="work.2.cat">Client work</span></div><h3 data-k="work.2.title">Vivaco e-shop automation</h3><p class="kick" data-k="work.2.kicker">AI ops for a Czech cosmetics brand across multiple Shoptet stores.</p><ul class="chips"><li>Claude skills</li><li>Shoptet</li><li>SEO</li><li>Sales analytics</li></ul></div><div class="c-r"><p class="intro" data-k="work.2.intro">Skills that rebuild and localize product pages with SEO built in, plus sales and marketing dashboards.</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-6 .5A3.5 3.5 0 0 0 4 12a3.5 3.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5 0z"/><path d="M12 5a3 3 0 0 1 6 .5A3.5 3.5 0 0 1 20 12a3.5 3.5 0 0 1-3 5.5 2.5 2.5 0 0 1-5 0"/></svg></span><span class="cat" data-k="work.3.cat">Product</span></div><h3 data-k="work.3.title">AI productivity system + "second brain"</h3><p class="kick" data-k="work.3.kicker">Calendar, reminders, habits and tasks, merged into one AI-native app.</p><ul class="chips"><li>Claude</li><li>ActivityWatch</li><li>Python</li><li>Scheduled agents</li></ul></div><div class="c-r"><div class="more-body"><ul class="pts"><li><b data-k="work.3.points.0.t">Task breakdown</b> <span data-k="work.3.points.0.d">Daily task intake, split into steps by an LLM and scheduled around my calendar.</span></li><li><b data-k="work.3.points.1.t">Activity tracking</b> <span data-k="work.3.points.1.d">Daily activity classified against daily goals.</span></li><li><b data-k="work.3.points.2.t">Library</b> <span data-k="work.3.points.2.d">A searchable second brain for media and learning, enriched nightly by an agent.</span></li></ul></div></div></article>
+<article class="card solo"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 16l2.5-3 2 1.5 2-3"/></svg></span><span class="cat" data-k="work.4.cat">Investment memo</span></div><h3 data-k="work.4.title">Duolingo (DUOL) investment memo</h3><p class="kick" data-k="work.4.kicker">A buy-side memo from July 2026, published as a web page.</p><ul class="chips"><li>Equity research</li><li>Consumer tech</li></ul><a class="go" href="https://duolingo-sn.pplx.app"><span data-k="work.4.btn.label">Open the memo</span><i aria-hidden="true">↗</i></a></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.6a6 6 0 0 1 3 5.4"/></svg></span><span class="cat" data-k="work.5.cat">Case study</span></div><h3 data-k="work.5.title">Fixing employee onboarding at a 4,000-person company</h3><p class="kick" data-k="work.5.kicker">AI adoption case study with a process map, a product plan and a working prototype.</p><ul class="chips"><li>Process mapping</li><li>Product charter</li><li>Prototype</li><li>AI adoption</li></ul><a class="go" href="https://claude.ai/artifact/8kpH6nq3Cohm4RBos8NssN"><span data-k="work.5.btn.label">Open the case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.5.intro">Fictional 4,000-person company: 40% of hires start without a working laptop, 18% leave within 90 days. Mapped the process, found the root causes, wrote the charter and roadmap, shipped a prototype readiness portal.</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6.4-6.4"/><circle cx="7.4" cy="16.6" r="1" fill="currentColor" stroke="none"/></svg></span><span class="cat" data-k="work.6.cat">Product</span></div><h3 data-k="work.6.title">Custom Discord trader tracker</h3><p class="kick" data-k="work.6.kicker">Automatically collects and tracks trading calls to find profitable traders.</p><ul class="chips"><li>Node</li><li>Python</li><li>Claude</li><li>Scheduled agents</li></ul></div><div class="c-r"><p class="intro" data-k="work.6.intro">Monitors each trader's calls and how they perform.</p></div></article>
+<article class="card"><div class="c-l"><div class="meta"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5a8 8 0 1 0 8 8h-8z"/><path d="M14 3a7 7 0 0 1 7 7h-7z"/></svg></span><span class="cat" data-k="work.7.cat">Case study</span></div><h3 data-k="work.7.title">A $30M long-only portfolio built on an AI thesis</h3><p class="kick" data-k="work.7.kicker">A case study I wrote for an investment analyst hiring process.</p><ul class="chips"><li>Equities</li><li>Portfolio construction</li><li>AI thesis</li></ul><a class="go" href="https://app.notion.com/p/AI-Thesis-Portfolio-Case-Study-30M-Long-Only-Equity-Portfolio-41a0fc3944148112ac51e7fb058c2999"><span data-k="work.7.btn.label">Full case study</span><i aria-hidden="true">↗</i></a></div><div class="c-r"><p class="intro" data-k="work.7.intro">$30M in public stocks around an AI thesis, each held 1 to 10 years. The brief: beat the Nasdaq in up and down markets with 65 to 80% active share.</p></div></article>
 </div></div></section>
 <section class="band bg" id="background"><div class="wrap"><h2 data-k="bgTitle">Background</h2><div class="tl">
-<div class="tr"><time data-k="timeline.0.when">2025 – now</time><div><h3><span data-k="timeline.0.org">AI Products and Automation</span><em data-k="timeline.0.role">Freelance</em></h3><p data-k="timeline.0.text">Building AI tools and automations for real business workflows, from e-commerce operations to research and trading.</p></div></div>
+<div class="tr"><time data-k="timeline.0.when">2025 – now</time><div><h3><span data-k="timeline.0.org">AI Products and Automation</span><em data-k="timeline.0.role">Freelance</em></h3><p data-k="timeline.0.text">Shipping AI agents and automations for e-commerce, VC research and trading.</p></div></div>
 <div class="tr"><time data-k="timeline.1.when">2022 – 2025</time><div><h3><span data-k="timeline.1.org">RockawayX</span><em data-k="timeline.1.role">Investor</em></h3><p data-k="timeline.1.text">Led multiple deals across AI and consumer tech, deploying mid-seven figures in USD across liquid and private markets.</p></div></div>
 <div class="tr"><time data-k="timeline.2.when">2019 – 2022</time><div><h3><span data-k="timeline.2.org">Barclays</span><em data-k="timeline.2.role">Software Engineer</em></h3><p data-k="timeline.2.text">Built bond-trading systems used by trading desks in London and New York, in Kotlin and Java.</p></div></div>
 <div class="tr"><time data-k="timeline.3.when">Education</time><div><h3><span data-k="timeline.3.org">Czech Technical University in Prague</span><em data-k="timeline.3.role">FIT</em></h3><p data-k="timeline.3.text">Ing. and Bc. in Information Systems and Management. Diploma thesis for Ackee Blockchain, bachelor's thesis supervised by a CERN researcher.</p></div></div>
@@ -205,7 +260,7 @@ body.editing{padding-bottom:80px}
  "work": [
   {
    "title": "Edgeline: an AI-assisted trading tool",
-   "kicker": "A full-stack web app that combines a trading journal, stats and insights, a portfolio tracker and a market screener.",
+   "kicker": "Full-stack trading platform: journal, analytics, portfolio and screener in one app.",
    "btn": {
     "label": "Live demo",
     "href": "https://edgeline-sizb.onrender.com/demo"
@@ -218,31 +273,27 @@ body.editing{padding-bottom:80px}
     "Claude API",
     "Binance and Hyperliquid APIs"
    ],
-   "intro": "I rebuilt the tools I used every day as one app of my own, with 40+ data sources, automated trade logging and proactive market scans.",
+   "intro": "Replaced my daily tool stack with one app: 40+ data sources, automated trade logging, AI market scans.",
    "points": [
     {
-     "t": "Automated trade logging",
-     "d": "Hyperliquid and Binance trades synchronized"
+     "t": "Trade analytics",
+     "d": "MFE/MAE per trade and post-exit price tracking."
     },
     {
-     "t": "What price did",
-     "d": "How far each trade went for and against me, and where price went after I closed."
+     "t": "Mistake attribution",
+     "d": "Tagged errors and exit reasons, ranked by P&amp;L cost."
     },
     {
-     "t": "Mistake tracking",
-     "d": "I tag mistakes and exit reasons, and it shows which ones cost the most."
-    },
-    {
-     "t": "Risk limits",
-     "d": "A daily loss stop, a cooldown after a losing streak and a weekly check before I can size up."
+     "t": "Risk engine",
+     "d": "Daily loss stop, losing-streak cooldown, trading score"
     },
     {
      "t": "Exchange sync",
-     "d": "Pulls fills and positions from Binance and Hyperliquid, with CSV import for the rest."
+     "d": "Live fills and positions from Binance and Hyperliquid, CSV for the rest."
     },
     {
-     "t": "Screener and portfolio",
-     "d": "A market screener with an AI read on each chart, plus a portfolio tab."
+     "t": "AI screener",
+     "d": "Market scans with an LLM read on each chart, plus a portfolio view."
     }
    ],
    "more": "What it does",
@@ -251,64 +302,80 @@ body.editing{padding-bottom:80px}
    "btn2": {
     "label": "Code on GitHub",
     "href": "https://github.com/kupkama2/edgeline-trading-journal"
-   }
+   },
+   "icon": "chart"
   },
   {
    "title": "VC workflow automation",
    "cat": "Client work",
-   "kicker": "A venture investor's day-to-day workflow, automated.",
+   "kicker": "Helped build an agentic deal sourcing and diligence tool.",
    "tags": [
     "APIs",
     "Scrapers",
     "Claude"
    ],
-   "intro": "Automated founder and startup search, outreach, quick scans and due diligence, taking the manual work out of the analyst's job.",
+   "intro": "Agents handle founder search, outreach, first-pass screening and due diligence.",
    "points": [],
    "more": "What it does",
-   "art": "dots"
+   "art": "dots",
+   "icon": "funnel",
+   "feature": true,
+   "layout": "pipe",
+   "kpis": [
+    {
+     "k": "~80%",
+     "v": "of founders reached early"
+    },
+    {
+     "k": "3+ weeks",
+     "v": "ahead of the usual pipeline"
+    }
+   ]
   },
   {
    "title": "Vivaco e-shop automation",
-   "kicker": "Vivaco is a Czech natural cosmetics brand with several e-shops.",
+   "kicker": "AI ops for a Czech cosmetics brand across multiple Shoptet stores.",
    "tags": [
     "Claude skills",
     "Shoptet",
     "SEO",
     "Sales analytics"
    ],
-   "intro": "I wrote Claude skills that automatically rebuild product pages with SEO-optimized content, and built custom dashboards for sales and marketing.",
+   "intro": "Skills that rebuild and localize product pages with SEO built in, plus sales and marketing dashboards.",
    "points": [],
    "more": "What it does",
    "cat": "Client work",
-   "art": "vivaco"
+   "art": "vivaco",
+   "icon": "store"
   },
   {
-   "title": "Personal time management and productivity",
-   "kicker": "Reminders, calendar, habit tracker and to-do list, rebuilt as one AI-powered app.",
+   "title": "AI productivity system + \"second brain\"",
+   "kicker": "Calendar, reminders, habits and tasks, merged into one AI-native app.",
    "tags": [
     "Claude",
     "ActivityWatch",
     "Python",
     "Scheduled agents"
    ],
-   "intro": "All my productivity apps rebuilt as one, tailored to how I work.",
+   "intro": "",
    "points": [
     {
      "t": "Task breakdown",
-     "d": "Takes in my tasks each day, breaks them into steps and organizes them around my calendar."
+     "d": "Daily task intake, split into steps by an LLM and scheduled around my calendar."
     },
     {
-     "t": "Activity tracker",
-     "d": "Tracks my activity and focus against the goals I set for the day."
+     "t": "Activity tracking",
+     "d": "Daily activity classified against daily goals."
     },
     {
      "t": "Library",
-     "d": "A second brain that stores media and learning content to search and come back to later."
+     "d": "A searchable second brain for media and learning, enriched nightly by an agent."
     }
    ],
    "more": "What it does",
    "cat": "Product",
-   "art": "doingnow"
+   "art": "doingnow",
+   "icon": "brain"
   },
   {
    "title": "Duolingo (DUOL) investment memo",
@@ -325,7 +392,8 @@ body.editing{padding-bottom:80px}
    "points": [],
    "more": "Key points",
    "cat": "Investment memo",
-   "art": "memo"
+   "art": "memo",
+   "icon": "memo"
   },
   {
    "title": "Fixing employee onboarding at a 4,000-person company",
@@ -340,28 +408,12 @@ body.editing{padding-bottom:80px}
     "Prototype",
     "AI adoption"
    ],
-   "intro": "A fictional 4,000-person company where 40% of new hires start without a working laptop and 18% leave within 90 days. I mapped the current process, found the root causes, wrote a charter and roadmap, and built a prototype of a readiness portal.",
-   "points": [
-    {
-     "t": "It starts too late",
-     "d": "Nothing happens between the signed offer and day one."
-    },
-    {
-     "t": "Steps wait on each other",
-     "d": "Hand-offs that could run in parallel run one after another."
-    },
-    {
-     "t": "No owner",
-     "d": "No shared status and nobody in charge, so problems only show up on day one."
-    },
-    {
-     "t": "The fix",
-     "d": "Keep each team's rules, but change when information moves, who follows up and where status lives. Predictable beats fast."
-    }
-   ],
+   "intro": "Fictional 4,000-person company: 40% of hires start without a working laptop, 18% leave within 90 days. Mapped the process, found the root causes, wrote the charter and roadmap, shipped a prototype readiness portal.",
+   "points": [],
    "more": "Key points",
    "cat": "Case study",
-   "art": "onboarding"
+   "art": "onboarding",
+   "icon": "people"
   },
   {
    "title": "Custom Discord trader tracker",
@@ -373,23 +425,11 @@ body.editing{padding-bottom:80px}
     "Scheduled agents"
    ],
    "intro": "Monitors each trader's calls and how they perform.",
-   "points": [
-    {
-     "t": "Text, screenshots and video input parsing",
-     "d": ""
-    },
-    {
-     "t": "Scheduled runs",
-     "d": ""
-    },
-    {
-     "t": "Chart and signal generation",
-     "d": ""
-    }
-   ],
+   "points": [],
    "more": "What it does",
    "cat": "Product",
-   "art": "callsheet"
+   "art": "callsheet",
+   "icon": "radar"
   },
   {
    "title": "A $30M long-only portfolio built on an AI thesis",
@@ -404,35 +444,11 @@ body.editing{padding-bottom:80px}
     "AI thesis"
    ],
    "intro": "$30M in public stocks around an AI thesis, each held 1 to 10 years. The brief: beat the Nasdaq in up and down markets with 65 to 80% active share.",
-   "points": [
-    {
-     "t": "Seven themes",
-     "d": "Each theme is its own sub-portfolio, sized by conviction and by how closely it tracks the Nasdaq."
-    },
-    {
-     "t": "Correlation",
-     "d": "0.41 to the Nasdaq over 3 years, 0.36 over the last 12 months and 0.57 in the 2022 drawdown."
-    },
-    {
-     "t": "Outside the US",
-     "d": "ASML, SK Hynix, Rheinmetall and Keyence fit the thesis but aren't in the index."
-    },
-    {
-     "t": "Themes the index misses",
-     "d": "Defence, space, robotics and biotech soften drawdowns without costing return."
-    },
-    {
-     "t": "Where AI helps",
-     "d": "Research on demand, news alerts, and the maths: active share, correlations, rebalancing and attribution."
-    },
-    {
-     "t": "Where it doesn't",
-     "d": "Building the thesis, talking to people close to the companies, and making the final call."
-    }
-   ],
+   "points": [],
    "more": "Key points",
    "cat": "Case study",
-   "art": "thesis"
+   "art": "thesis",
+   "icon": "pie"
   }
  ],
  "bgTitle": "Background",
@@ -441,7 +457,7 @@ body.editing{padding-bottom:80px}
    "when": "2025 – now",
    "org": "AI Products and Automation",
    "role": "Freelance",
-   "text": "Building AI tools and automations for real business workflows, from e-commerce operations to research and trading."
+   "text": "Shipping AI agents and automations for e-commerce, VC research and trading."
   },
   {
    "when": "2022 – 2025",
@@ -471,7 +487,7 @@ body.editing{padding-bottom:80px}
  "shots": []
 }</script>
 <script id="app">/* Cover illustrations, one per project, drawn on a 400 x 250 board. */
-var ACC = "#ff5a1f", INK = "#111111";
+var ACC = "#2b3db8", INK = "#111111";
 function rnd(seed) { var s = seed; return function () { s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
 function svg(inner, bg) {
   return '<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><rect width="400" height="250" fill="' + bg + '"/>' + inner + '</svg>';
@@ -560,7 +576,7 @@ function cover(w) {
    state, never from the live DOM. */
 var NEW = {
   facts: {k: "New fact", v: "What it means"},
-  work: {title: "New project", cat: "Product", more: "Key points", art: "dots", kicker: "One line on what it is.", tags: [], intro: "What it is and why it matters.", points: []},
+  work: {title: "New project", icon: "chart", cat: "Product", more: "Key points", art: "dots", kicker: "One line on what it is.", tags: [], intro: "What it is and why it matters.", points: []},
   points: {t: "New point", d: "Describe it."},
   timeline: {when: "Year", org: "Company", role: "Role", text: "What you did."}
 };
@@ -582,7 +598,9 @@ function render(S, E) {
   h.push('<nav><div class="wrap"><b>Martin Kupka</b><a href="#work">Work</a><a href="#background">Background</a><a href="#contact">Contact</a></div></nav>');
 
   h.push('<header class="band hero"><div class="wrap"><h1' + k("hero.h1") + '>' + S.hero.h1 + '</h1>' +
-    ((S.hero.lede || E) ? '<p class="lede"' + k("hero.lede") + '>' + S.hero.lede + '</p>' : "") + '<div class="figs">');
+    ((S.hero.lede || E) ? '<p class="lede"' + k("hero.lede") + '>' + S.hero.lede + '</p>' : "") +
+    ((S.hero.b1 || S.hero.b2 || E) ? '<div class="cta">' + ((S.hero.b1 || E) ? '<a class="go solid" href="#work"><span' + k("hero.b1") + '>' + S.hero.b1 + '</span><i aria-hidden="true">↓</i></a>' : "") +
+      ((S.hero.b2 || E) ? '<a class="go" href="#contact"><span' + k("hero.b2") + '>' + S.hero.b2 + '</span></a>' : "") + '</div>' : "") + '<div class="figs">');
   S.facts.forEach(function (f, i) {
     var q = "facts." + i;
     if (f.k2 != null) h.push('<div class="f g">' + ctl("facts", i, S.facts.length, "fact") +
@@ -601,19 +619,28 @@ function render(S, E) {
     var p = "work." + i;
     var intro = (w.intro || E) ? '<p class="intro"' + k(p + ".intro") + '>' + w.intro + '</p>' : "";
     var body = '' +
-      ((E && w.points.length) ? '<h4' + k(p + ".more") + '>' + (w.more || "") + '</h4>' : "") +
+      ((E && w.points.length && w.open === false) ? '<h4' + k(p + ".more") + '>' + (w.more || "") + '</h4>' : "") +
       ((E && w.points.length) ? '<button type="button" class="add clr" data-act="clear" data-l="' + p + '.points">Remove this section</button>' : "") +
-      '<ul class="pts">' + w.points.map(function (pt, j) {
+      '<ul class="pts"' + (E ? ' data-pl="' + p + '.points"' : '') + '>' + w.points.map(function (pt, j) {
         return '<li>' + ctl(p + ".points", j, w.points.length, "point") + '<b' + k(p + ".points." + j + ".t") + '>' + pt.t + '</b> <span' + k(p + ".points." + j + ".d") + '>' + pt.d + '</span></li>';
-      }).join("") + '</ul>' + add(p + ".points", "Add point") +
-      (w.tags.length ? '<p class="built">' + w.tags.join(" · ") + '</p>' : "");
-    h.push('<article class="card">' + (E ? ctl("work", i, S.work.length, "project") : "") +
+      }).join("") + '</ul>' + add(p + ".points", "Add point");
+    var pipe = w.layout === "pipe" && !E && w.points.length;
+    var strip = pipe ? '<ol class="pipe">' + w.points.map(function (pt, j) {
+      return '<li><i aria-hidden="true">' + (j < 9 ? "0" : "") + (j + 1) + '</i><b>' + pt.t + '</b><span>' + pt.d + '</span></li>'; }).join("") + '</ol>' : "";
+    var inner = '<div class="more-body">' + body + '</div>';
+    var right = pipe ? "" : ((w.points.length || E) ? ((E || w.open !== false) ? inner : '<details class="more"><summary>' + (w.more || "Read more") + '</summary>' + inner + '</details>') : "");
+    var kpis = (w.kpis && w.kpis.length) ? '<div class="kpis">' + w.kpis.map(function (x, j) { return '<div><strong' + k(p + ".kpis." + j + ".k") + '>' + x.k + '</strong><span' + k(p + ".kpis." + j + ".v") + '>' + x.v + '</span></div>'; }).join("") + '</div>' : "";
+    var chips = w.tags.length ? '<ul class="chips">' + w.tags.map(function (t) { return '<li>' + t + '</li>'; }).join("") + '</ul>' : "";
+    var shot = w.shot && w.shot.src ? '<a class="shot" href="' + esc(w.shot.href || w.shot.src) + '"><img src="' + esc(w.shot.src) + '" alt="' + esc(w.shot.alt || "") + '" loading="lazy"></a>' : "";
+    var solo = !E && !w.intro && !right && !strip && !shot;
+    var cls = "card" + (w.feature ? " feat" : "") + (shot ? " has-shot" : "") + (solo ? " solo" : "");
+    h.push('<article class="' + cls + '">' + (E ? ctl("work", i, S.work.length, "project") : "") +
       (w.img ? '<div class="cover">' + cover(w) + '</div>' : "") +
-      '<div class="c-l"><div class="meta"><span class="cat"' + k(p + ".cat") + '>' + (w.cat || "") + '</span></div>' +
-      '<h3' + k(p + ".title") + '>' + w.title + '</h3><p class="kick"' + k(p + ".kicker") + '>' + w.kicker + '</p>' +
+      '<div class="c-l"><div class="meta">' + ico(w.icon) + '<span class="cat"' + k(p + ".cat") + '>' + (w.cat || "") + '</span></div>' +
+      '<h3' + k(p + ".title") + '>' + w.title + '</h3><p class="kick"' + k(p + ".kicker") + '>' + w.kicker + '</p>' + kpis + chips +
       (w.btn ? '<a class="go" href="' + esc(w.btn.href) + '"><span' + k(p + ".btn.label") + '>' + w.btn.label + '</span><i aria-hidden="true">↗</i></a>' : "") +
       (w.btn2 ? '<a class="go alt" href="' + esc(w.btn2.href) + '"><span' + k(p + ".btn2.label") + '>' + w.btn2.label + '</span><i aria-hidden="true">↗</i></a>' : "") + '</div>' +
-      '<div class="c-r">' + intro + ((w.points.length || E) ? (E ? '<div class="more-body">' + body + '</div>' : '<details class="more"><summary>' + (w.more || "Read more") + '</summary><div class="more-body">' + body + '</div></details>') : (w.tags.length ? '<p class="built">' + w.tags.join(" · ") + '</p>' : "")) + '</div>' +
+      (solo ? "" : '<div class="c-r">' + intro + right + '</div>') + shot + strip +
       '</article>');
   });
   h.push('</div>' + add("work", "Add project") + '</div></section>');
@@ -646,6 +673,17 @@ var IC = {
   li: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5M3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-1.8 3.77-1.8 4.03 0 4.37 2.65 4.37 6.1v5.2h-4v-4.6c0-1.1-.02-2.5-1.52-2.5-1.52 0-1.76 1.2-1.76 2.42v4.68h-4z"/></svg>',
   gh: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg>'
 };
+var ICON = {
+  chart: '<path d="M6 4v3M6 15v4M12 9v2M12 17v3M18 5v2M18 13v5"/><rect x="4" y="7" width="4" height="8" rx="1"/><rect x="10" y="11" width="4" height="6" rx="1"/><rect x="16" y="7" width="4" height="6" rx="1"/>',
+  funnel: '<path d="M3 5h18l-7 8v5l-4 2v-7z"/>',
+  store: '<path d="M3 10l2-6h14l2 6z"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  brain: '<path d="M12 5a3 3 0 0 0-6 .5A3.5 3.5 0 0 0 4 12a3.5 3.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5 0z"/><path d="M12 5a3 3 0 0 1 6 .5A3.5 3.5 0 0 1 20 12a3.5 3.5 0 0 1-3 5.5 2.5 2.5 0 0 1-5 0"/>',
+  memo: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 16l2.5-3 2 1.5 2-3"/>',
+  people: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.6a6 6 0 0 1 3 5.4"/>',
+  radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6.4-6.4"/><circle cx="7.4" cy="16.6" r="1" fill="currentColor" stroke="none"/>',
+  pie: '<path d="M11 5a8 8 0 1 0 8 8h-8z"/><path d="M14 3a7 7 0 0 1 7 7h-7z"/>'
+};
+function ico(n) { return ICON[n] ? '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[n] + '</svg></span>' : ""; }
 function getAt(o, path) { return path.split(".").reduce(function (a, p) { return a[p]; }, o); }
 function setAt(o, path, v) { var ps = path.split("."), last = ps.pop(); getAt(o, ps.join("."))[last] = v; }
 
@@ -659,33 +697,126 @@ function boot() {
     root.innerHTML = render(S, editing);
     if (editing) root.querySelectorAll("[data-k]").forEach(function (el) { el.setAttribute("contenteditable", "true"); el.spellcheck = true; });
     document.body.classList.toggle("editing", editing);
+    if (editing) decorate();
+    refreshBar();
+  }
+
+  /* Suggested changes: S.suggest holds {k, op, old, new}. In edit mode each one
+     shows next to its field, current text against the suggestion, with buttons
+     to accept or dismiss. The suggestion text itself can be edited first. */
+  function sugs() { return S.suggest || (S.suggest = []); }
+  function txt(html) { var d = document.createElement("div"); d.innerHTML = html == null ? "" : String(html); return d.textContent; }
+  function wdiff(a, b) {
+    var A = txt(a).split(/(\s+)/), B = txt(b).split(/(\s+)/), n = A.length, m = B.length, L = [], i, j;
+    for (i = 0; i <= n; i++) { L[i] = []; for (j = 0; j <= m; j++) L[i][j] = 0; }
+    for (i = n - 1; i >= 0; i--) for (j = m - 1; j >= 0; j--) L[i][j] = A[i] === B[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+    var oa = "", ob = ""; i = 0; j = 0;
+    while (i < n && j < m) {
+      if (A[i] === B[j]) { oa += esc(A[i]); ob += esc(B[j]); i++; j++; }
+      else if (L[i + 1][j] >= L[i][j + 1]) { oa += "<del>" + esc(A[i]) + "</del>"; i++; }
+      else { ob += "<ins>" + esc(B[j]) + "</ins>"; j++; }
+    }
+    while (i < n) oa += "<del>" + esc(A[i++]) + "</del>";
+    while (j < m) ob += "<ins>" + esc(B[j++]) + "</ins>";
+    return [oa, ob];
+  }
+  function label(k) {
+    var p = k.split("."), out = [];
+    if (p[0] === "work") out.push(txt(S.work[p[1]].title).split(":")[0]);
+    else if (p[0] === "timeline") out.push(txt(S.timeline[p[1]].org));
+    else if (p[0] === "hero") out.push("Top of page");
+    else if (p[0] === "facts") out.push(txt(S.facts[p[1]].title || S.facts[p[1]].k));
+    else out.push(p[0]);
+    if (/\.points$/.test(k)) return out.join("") + " · new point";
+    var f = p.slice(p[0] === "hero" ? 1 : 2).join(" ").replace(/points (\d+)/, function (_, n) { return "point " + (+n + 1); });
+    f = f.replace(/\bt$/, "title").replace(/\bd$/, "text").replace("kicker", "subtitle").replace(/^h1$/, "headline");
+    return out.join("") + " · " + f;
+  }
+  function decorate() {
+    S.suggest = sugs().filter(live);
+    sugs().forEach(function (s, i) {
+      var box = document.createElement("div");
+      box.className = "sg"; box.setAttribute("contenteditable", "false");
+      var cur = getAt(S, s.k), head = '<div class="sg-h"><b>' + esc(label(s.k)) + '</b><span>' +
+        '<button type="button" data-sg="ok" data-i="' + i + '">✓ Accept</button><button type="button" data-sg="no" data-i="' + i + '">✕ Dismiss</button></span></div>';
+      if (s.op === "add") {
+        var nv = s.new || {}, first = sugs().findIndex(function (o) { return o.op === "add" && o.k === s.k; }) === i;
+        if (!first) head = head.replace('data-sg="ok"', 'data-sg="ok" disabled title="Accept the points above first"');
+        box.innerHTML = head + '<div class="sg-g"><div class="sg-o"><small>Current</small><p><i>Not on the page yet</i></p></div><div class="sg-n"><small>New point · click to edit</small><p class="sg-e"><b contenteditable="true" data-sgi="' + i + '" data-f="t">' + (nv.t || "") + '</b> <span contenteditable="true" data-sgi="' + i + '" data-f="d">' + (nv.d || "") + '</span></p></div></div>';
+        var ul = root.querySelector('[data-pl="' + s.k + '"]');
+        if (ul) { var last = ul.nextElementSibling && ul.nextElementSibling.classList.contains("add") ? ul.nextElementSibling : ul; while (last.nextElementSibling && last.nextElementSibling.classList.contains("sg")) last = last.nextElementSibling; last.insertAdjacentElement("afterend", box); }
+        else root.querySelector(".hero .wrap").appendChild(box);
+        return;
+      }
+      if (s.op === "del") {
+        box.innerHTML = head + '<div class="sg-g"><div class="sg-o"><small>Current</small><p><del>' + esc(txt(cur && cur.t)) + (cur && cur.d ? ": " + esc(txt(cur.d)) : "") + '</del></p></div><div class="sg-n"><small>Suggested</small><p><i>Remove this point</i></p></div></div>';
+      } else {
+        var d = wdiff(cur, s.new);
+        box.innerHTML = head + '<div class="sg-g"><div class="sg-o"><small>Current</small><p>' + (d[0] || "<i>empty</i>") + '</p></div>' +
+          '<div class="sg-n"><small>Suggested · click to edit</small><p class="sg-e" contenteditable="true" data-sgi="' + i + '">' + (s.new === "" ? "" : s.new) + '</p><p class="sg-d">' + (d[1] || "<i>removed</i>") + '</p></div></div>';
+      }
+      var path = s.op === "del" ? s.k + ".t" : s.k, el = root.querySelector('[data-k="' + path + '"]');
+      if (!el) { root.querySelector(".hero .wrap").appendChild(box); return; }
+      var host = el.closest("li") || el.closest(".f") || el;
+      if (host === el) el.insertAdjacentElement("afterend", box); else host.appendChild(box);
+    });
+  }
+  function remap(lp, fn) {
+    S.suggest = sugs().filter(function (s) {
+      if (s.k.indexOf(lp + ".") !== 0) return true;
+      var rest = s.k.slice(lp.length + 1).split("."), n = fn(+rest[0]);
+      if (n < 0) return false;
+      rest[0] = String(n); s.k = lp + "." + rest.join("."); return true;
+    });
+  }
+  function live(s) {
+    try { var ps = s.k.split("."); ps.pop(); var par = ps.length ? getAt(S, ps.join(".")) : S;
+      return par != null && typeof par === "object" && (s.op !== "add" || Array.isArray(getAt(S, s.k))); } catch (e) { return false; }
+  }
+  function accept(i) {
+    var s = sugs()[i]; sugs().splice(i, 1);
+    if (s.op === "del") {
+      var ps = s.k.split("."), idx = +ps.pop(), lp = ps.join(".");
+      getAt(S, lp).splice(idx, 1); remap(lp, function (n) { return n === idx ? -1 : n > idx ? n - 1 : n; });
+    } else if (s.op === "add") getAt(S, s.k).push({t: s.new.t, d: s.new.d});
+    else setAt(S, s.k, s.new);
   }
   paint();
 
   root.addEventListener("input", function (e) {
+    var sg = e.target.closest("[data-sgi]");
+    if (sg && editing) { var sv = sg.innerHTML.replace(/<br\s*\/?>$/i, "").trim(); if (sg.dataset.f) sugs()[+sg.dataset.sgi].new[sg.dataset.f] = sv; else sugs()[+sg.dataset.sgi].new = sv; dirty = true; status("Unsaved changes"); return; }
     var el = e.target.closest("[data-k]");
     if (!el || !editing) return;
     setAt(S, el.dataset.k, el.innerHTML.replace(/<br\s*\/?>$/i, "").trim());
     dirty = true; status("Unsaved changes");
   });
   root.addEventListener("paste", function (e) {
-    if (!editing || !e.target.closest("[data-k]")) return;
+    if (!editing || !e.target.closest("[data-k],[data-sgi]")) return;
     e.preventDefault();
     document.execCommand("insertText", false, (e.clipboardData || window.clipboardData).getData("text/plain"));
   });
   root.addEventListener("keydown", function (e) {
-    if (editing && e.key === "Enter" && e.target.closest("[data-k]")) e.preventDefault();
+    if (editing && e.key === "Enter" && e.target.closest("[data-k],[data-sgi]")) e.preventDefault();
   });
   root.addEventListener("click", function (e) {
     if (!editing) return;
+    var g = e.target.closest("button[data-sg]");
+    if (g) {
+      e.preventDefault();
+      if (g.dataset.sg === "ok") accept(+g.dataset.i); else sugs().splice(+g.dataset.i, 1);
+      dirty = true; paint(); status(sugs().length ? sugs().length + " suggestions left" : "All suggestions handled. Save to keep.");
+      return;
+    }
     var b = e.target.closest("button[data-act]");
     if (b) {
       e.preventDefault();
       var list = getAt(S, b.dataset.l), i = +b.dataset.i, act = b.dataset.act;
-      if (act === "up" && i > 0) list.splice(i - 1, 0, list.splice(i, 1)[0]);
-      else if (act === "down" && i < list.length - 1) list.splice(i + 1, 0, list.splice(i, 1)[0]);
-      else if (act === "del") list.splice(i, 1);
-      else if (act === "clear") list.splice(0, list.length);
+      var lp = b.dataset.l;
+      if (act === "up" && i > 0) { list.splice(i - 1, 0, list.splice(i, 1)[0]); remap(lp, function (n) { return n === i ? i - 1 : n === i - 1 ? i : n; }); }
+      else if (act === "down" && i < list.length - 1) { list.splice(i + 1, 0, list.splice(i, 1)[0]); remap(lp, function (n) { return n === i ? i + 1 : n === i + 1 ? i : n; }); }
+      else if (act === "del") { list.splice(i, 1); remap(lp, function (n) { return n === i ? -1 : n > i ? n - 1 : n; }); }
+      else if (act === "clear") { list.splice(0, list.length); remap(lp, function () { return -1; }); }
       else if (act === "add") list.push(JSON.parse(JSON.stringify(NEW[b.dataset.l.split(".").pop()])));
       dirty = true; paint(); status("Unsaved changes");
       return;
@@ -696,13 +827,23 @@ function boot() {
 
   var bar = document.createElement("div");
   bar.className = "editbar"; bar.hidden = true;
-  bar.innerHTML = '<span class="msg" role="status"></span><button type="button" class="eb-edit">Edit page</button><button type="button" class="eb-cancel" hidden>Cancel</button><button type="button" class="eb-save" hidden>Save</button>';
+  bar.innerHTML = '<span class="msg" role="status"></span><button type="button" class="eb-all" hidden>Accept all</button><button type="button" class="eb-rev" hidden></button><button type="button" class="eb-edit">Edit page</button><button type="button" class="eb-cancel" hidden>Cancel</button><button type="button" class="eb-save" hidden>Save</button>';
   document.body.appendChild(bar);
   var bEdit = bar.querySelector(".eb-edit"), bSave = bar.querySelector(".eb-save"), bCancel = bar.querySelector(".eb-cancel"), msg = bar.querySelector(".msg");
+  var bAll = bar.querySelector(".eb-all"), bRev = bar.querySelector(".eb-rev");
   function status(t) { msg.textContent = t || ""; }
+  function refreshBar() {
+    if (!bAll) return;
+    var n = (S.suggest || []).length;
+    bRev.hidden = editing || !n; bRev.textContent = "Review " + n + " suggested change" + (n === 1 ? "" : "s");
+    bAll.hidden = !editing || !n;
+  }
+  bRev.onclick = function () { mode(true); var f = root.querySelector(".sg"); if (f) f.scrollIntoView({behavior: "smooth", block: "center"}); };
+  bAll.onclick = function () { while (sugs().length) accept(0); dirty = true; paint(); status("All accepted. Save to keep."); };
   function mode(on) {
     editing = on; bEdit.hidden = on; bSave.hidden = !on; bCancel.hidden = !on;
-    status(on ? "Click any text to change it. Arrows move points." : "");
+    var n = (S.suggest || []).length;
+    status(on ? (n ? n + " suggested changes, shown next to each field." : "Click any text to change it. Arrows move points.") : "");
     paint();
   }
   bEdit.onclick = function () { mode(true); };
@@ -726,7 +867,7 @@ function boot() {
     Promise.all([claude.use("user"), claude.use("artifact")]).then(function (r) {
       var user = r[0]; artifact = r[1];
       if (!artifact || !user || !user.canEdit) return;
-      return Promise.resolve(user.canEdit()).then(function (can) { if (can) bar.hidden = false; });
+      return Promise.resolve(user.canEdit()).then(function (can) { if (can) { bar.hidden = false; refreshBar(); } });
     }).catch(function () {});
   }
 }
