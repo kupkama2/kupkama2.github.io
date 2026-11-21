@@ -114,9 +114,10 @@ footer .wrap{border-top:1px solid var(--ink);padding-top:clamp(28px,4vw,48px);po
 footer .wrap::after{display:none;content:"";position:absolute;right:-80px;bottom:-80px;width:260px;height:260px;border-radius:50%;border:40px solid rgba(43,61,184,.14);pointer-events:none}
 footer h2{max-width:18ch;position:relative}
 .reach{list-style:none;margin:clamp(28px,4vw,44px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;position:relative}
-.reach span{display:none}
-.reach a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:4px;border:1px solid var(--ink);background:#fff;font-size:15px;font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.reach a{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px;border-radius:4px;border:1px solid var(--ink);background:#fff;font-size:15px;font-weight:600;text-decoration:none;overflow-wrap:anywhere}
 .reach li:first-child a{background:var(--ink);color:#fff}
+.reach svg{width:18px;height:18px;flex:none}
+.reach em{font-style:normal}
 .reach a:hover{background:var(--acc);border-color:var(--acc);color:#fff}
 .where{margin:24px 0 0;font-size:14px;color:var(--mute);position:relative}
 
@@ -173,7 +174,7 @@ body.editing{padding-bottom:80px}
 <div class="tr"><time data-k="timeline.2.when">2019 – 2022</time><div><h3><span data-k="timeline.2.org">Barclays</span><em data-k="timeline.2.role">Software Engineer</em></h3><p data-k="timeline.2.text">Built bond-trading systems used by trading desks in London and New York, in Kotlin and Java.</p></div></div>
 <div class="tr"><time data-k="timeline.3.when">Education</time><div><h3><span data-k="timeline.3.org">Czech Technical University in Prague</span><em data-k="timeline.3.role">FIT</em></h3><p data-k="timeline.3.text">Ing. and Bc. in Information Systems and Management. Diploma thesis for Ackee Blockchain, bachelor's thesis supervised by a CERN researcher.</p></div></div>
 </div></div></section>
-<footer class="band" id="contact"><div class="wrap"><h2 data-k="footer.h2">Looking for a team that wants AI to do real work.</h2><ul class="reach"><li><span>Email</span><a href="mailto:martinnkupka@gmail.com" data-k="footer.email">martinnkupka@gmail.com</a></li><li><span>Phone</span><a href="tel:+420774095670" data-k="footer.phone">+420 774 095 670</a></li><li><span>LinkedIn</span><a href="https://www.linkedin.com/in/martin-kupka-92390517a">martin-kupka ↗</a></li><li><span>GitHub</span><a href="https://github.com/kupkama2">kupkama2 ↗</a></li></ul><p class="where" data-k="footer.text">Based in Prague.</p></div></footer>
+<footer class="band" id="contact"><div class="wrap"><h2 data-k="footer.h2">Looking for a team that wants AI to do real work.</h2><ul class="reach"><li><a href="mailto:martinnkupka@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><em data-k="footer.email">martinnkupka@gmail.com</em></a></li><li><a href="tel:+420774095670" aria-label="Phone"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><em data-k="footer.phone">+420 774 095 670</em></a></li><li><a href="https://www.linkedin.com/in/martin-kupka-92390517a" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5M3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-1.8 3.77-1.8 4.03 0 4.37 2.65 4.37 6.1v5.2h-4v-4.6c0-1.1-.02-2.5-1.52-2.5-1.52 0-1.76 1.2-1.76 2.42v4.68h-4z"/></svg><em>LinkedIn</em></a></li><li><a href="https://github.com/kupkama2" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg><em>GitHub</em></a></li></ul><p class="where" data-k="footer.text">Based in Prague.</p></div></footer>
 </div>
 <script type="application/json" id="state">{
  "hero": {
@@ -631,14 +632,20 @@ function render(S, E) {
   var tel = String(F.phone).replace(/[^+\d]/g, "");
   h.push('<footer class="band" id="contact"><div class="wrap"><h2' + k("footer.h2") + '>' + F.h2 + '</h2>' +
     '<ul class="reach">' +
-    '<li><span>Email</span><a href="mailto:' + esc(F.email) + '"' + k("footer.email") + '>' + F.email + '</a></li>' +
-    '<li><span>Phone</span><a href="tel:' + tel + '"' + k("footer.phone") + '>' + F.phone + '</a></li>' +
-    '<li><span>LinkedIn</span><a href="https://www.linkedin.com/in/martin-kupka-92390517a">martin-kupka ↗</a></li>' +
-    '<li><span>GitHub</span><a href="https://github.com/kupkama2">kupkama2 ↗</a></li></ul>' +
+    '<li><a href="mailto:' + esc(F.email) + '" aria-label="Email">' + IC.mail + '<em' + k("footer.email") + '>' + F.email + '</em></a></li>' +
+    '<li><a href="tel:' + tel + '" aria-label="Phone">' + IC.phone + '<em' + k("footer.phone") + '>' + F.phone + '</em></a></li>' +
+    '<li><a href="https://www.linkedin.com/in/martin-kupka-92390517a" aria-label="LinkedIn">' + IC.li + '<em>LinkedIn</em></a></li>' +
+    '<li><a href="https://github.com/kupkama2" aria-label="GitHub">' + IC.gh + '<em>GitHub</em></a></li></ul>' +
     '<p class="where"' + k("footer.text") + '>' + F.text + '</p></div></footer>');
   return h.join("\n");
 }
 
+var IC = {
+  mail: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
+  li: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5M3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-1.8 3.77-1.8 4.03 0 4.37 2.65 4.37 6.1v5.2h-4v-4.6c0-1.1-.02-2.5-1.52-2.5-1.52 0-1.76 1.2-1.76 2.42v4.68h-4z"/></svg>',
+  gh: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg>'
+};
 function getAt(o, path) { return path.split(".").reduce(function (a, p) { return a[p]; }, o); }
 function setAt(o, path, v) { var ps = path.split("."), last = ps.pop(); getAt(o, ps.join("."))[last] = v; }
 
